@@ -7,27 +7,45 @@
     "items": {
         "type": "object",
         "properties": {
+            "patient": {
+                "type": "string",
+                "pattern": "^\\S+$",
+                "errorMessage": "Patient name must be provided and cannot contain spaces",
+                "meta": ["patient"]
+            },
             "sample": {
                 "type": "string",
                 "pattern": "^\\S+$",
                 "errorMessage": "Sample name must be provided and cannot contain spaces",
                 "meta": ["id"]
             },
-            "fastq_1": {
+            "variantcaller": {
                 "type": "string",
-                "format": "file-path",
-                "exists": true,
-                "pattern": "^\\S+\\.f(ast)?q\\.gz$",
-                "errorMessage": "FastQ file for reads 1 must be provided, cannot contain spaces and must have extension '.fq.gz' or '.fastq.gz'"
+                "pattern": "^\\S+$",
+                "errorMessage": "Variant caller name must be provided and cannot contain spaces",
+                "meta": ["caller"]
             },
-            "fastq_2": {
+            "vcf": {
                 "type": "string",
                 "format": "file-path",
                 "exists": true,
-                "pattern": "^\\S+\\.f(ast)?q\\.gz$",
-                "errorMessage": "FastQ file for reads 2 cannot contain spaces and must have extension '.fq.gz' or '.fastq.gz'"
+                "pattern": "^\\S+\\.vcf\\.gz$",
+                "errorMessage": "VCF file needs to be provided, cannot contain spaces and must have extension '.vcf.gz'"
+            },
+            "vcf_tbi": {
+                "type": "string",
+                "format": "file-path",
+                "exists": true,
+                "pattern": "^\\S+\\.vcf\\.gz.tbi$",
+                "errorMessage": "Index file needs to be provided, cannot contain spaces and must have extension '.vcf.gz.tbi'"
+            },
+            "varianttype": {
+                "type": "string",
+                "pattern": "^\\S+$",
+                "errorMessage": "Varianttype can be provided and cannot contain spaces [either 'snps' or 'indels']",
+                "meta": ["varianttype"]
             }
         },
-        "required": ["sample", "fastq_1"]
+        "required": ["patient", "sample", "variantcaller", "vcf", "vcf_tbi"]
     }
 }
