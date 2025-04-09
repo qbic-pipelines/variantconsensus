@@ -1,0 +1,167 @@
+Apr-09 16:46:30.138 [main] DEBUG nextflow.cli.Launcher - $> nextflow -quiet -log /Users/famke/01-pm4onco/repositories/variantconsensus/.nf-test/tests/f05c1aa129c204b7d145bd98dae2f44c/meta/nextflow.log run /Users/famke/01-pm4onco/repositories/variantconsensus/tests/../main.nf -c /Users/famke/01-pm4onco/repositories/variantconsensus/nextflow.config -c /Users/famke/01-pm4onco/repositories/variantconsensus/tests/nextflow.config -c /Users/famke/01-pm4onco/repositories/variantconsensus/conf/test.config -params-file /Users/famke/01-pm4onco/repositories/variantconsensus/.nf-test/tests/f05c1aa129c204b7d145bd98dae2f44c/meta/params.json -ansi-log false -profile test,docker -with-trace /Users/famke/01-pm4onco/repositories/variantconsensus/.nf-test/tests/f05c1aa129c204b7d145bd98dae2f44c/meta/trace.csv -w /Users/famke/01-pm4onco/repositories/variantconsensus/.nf-test/tests/f05c1aa129c204b7d145bd98dae2f44c/work
+Apr-09 16:46:30.176 [main] INFO  nextflow.cli.CmdRun - N E X T F L O W  ~  version 24.10.4
+Apr-09 16:46:30.188 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; embedded=false; plugins-dir=/Users/famke/.nextflow/plugins; core-plugins: nf-amazon@2.9.2,nf-azure@1.10.2,nf-cloudcache@0.4.2,nf-codecommit@0.2.2,nf-console@1.1.4,nf-google@1.15.3,nf-tower@1.9.3,nf-wave@1.7.4
+Apr-09 16:46:30.201 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+Apr-09 16:46:30.201 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+Apr-09 16:46:30.203 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.12.0 in 'deployment' mode
+Apr-09 16:46:30.209 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+Apr-09 16:46:30.222 [main] DEBUG nextflow.config.ConfigBuilder - Found config base: /Users/famke/01-pm4onco/repositories/variantconsensus/nextflow.config
+Apr-09 16:46:30.225 [main] DEBUG nextflow.config.ConfigBuilder - User config file: /Users/famke/01-pm4onco/repositories/variantconsensus/nextflow.config
+Apr-09 16:46:30.225 [main] DEBUG nextflow.config.ConfigBuilder - User config file: /Users/famke/01-pm4onco/repositories/variantconsensus/tests/nextflow.config
+Apr-09 16:46:30.226 [main] DEBUG nextflow.config.ConfigBuilder - User config file: /Users/famke/01-pm4onco/repositories/variantconsensus/conf/test.config
+Apr-09 16:46:30.226 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /Users/famke/01-pm4onco/repositories/variantconsensus/nextflow.config
+Apr-09 16:46:30.227 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /Users/famke/01-pm4onco/repositories/variantconsensus/nextflow.config
+Apr-09 16:46:30.227 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /Users/famke/01-pm4onco/repositories/variantconsensus/tests/nextflow.config
+Apr-09 16:46:30.227 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /Users/famke/01-pm4onco/repositories/variantconsensus/conf/test.config
+Apr-09 16:46:30.242 [main] DEBUG n.secret.LocalSecretsProvider - Secrets store: /Users/famke/.nextflow/secrets/store.json
+Apr-09 16:46:30.243 [main] DEBUG nextflow.secret.SecretsLoader - Discovered secrets providers: [nextflow.secret.LocalSecretsProvider@437ebf59] - activable => nextflow.secret.LocalSecretsProvider@437ebf59
+Apr-09 16:46:30.254 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `test,docker`
+Apr-09 16:46:31.281 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `test,docker`
+Apr-09 16:46:31.644 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `test,docker`
+Apr-09 16:46:31.660 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `test,docker`
+Apr-09 16:46:31.670 [main] DEBUG nextflow.config.ConfigBuilder - Available config profiles: [bih, cfc_dev, uzl_omics, ifb_core, embl_hd, denbi_qbic, alice, mjolnir_globe, uppmax, giga, incliva, ilifu, ki_luria, uge, icr_alma, rosalind_uge, lugh, mccleary, unibe_ibu, vai, czbiohub_aws, jax, roslin, ccga_med, tes, scw, unc_longleaf, tigem, tubingen_apg, google, apollo, ipop_up, vsc_calcua, pdc_kth, googlels, ceci_nic5, humantechnopole, stjude, daisybio, eddie, medair, biowulf, apptainer, bi, bigpurple, adcra, cedars, pawsey_setonix, vsc_kul_uhasselt, pawsey_nimbus, ucl_myriad, utd_ganymede, charliecloud, seattlechildrens, icr_davros, ceres, arm, munin, rosalind, hasta, cfc, uzh, shu_bmrc, ebi_codon_slurm, ebc, ccga_dx, crick, ku_sund_danhead, marvin, shifter, biohpc_gen, mana, mamba, york_viking, unc_lccc, wehi, awsbatch, wustl_htcf, arcc, ceci_dragon2, imperial, maestro, software_license, cannon, genotoul, nci_gadi, abims, janelia, nu_genomics, googlebatch, oist, sahmri, kaust, alliance_canada, mpcdf, leicester, vsc_ugent, create, sage, cambridge, jex, podman, ebi_codon, cheaha, xanadu, nyu_hpc, test, marjorie, computerome, ucd_sonic, seg_globe, sanger, dkfz, bluebear, pasteur, einstein, ethz_euler, m3c, test_full, imb, ucl_cscluster, tuos_stanage, azurebatch, hki, seadragon, crukmi, csiro_petrichor, qmul_apocrita, wave, docker, engaging, gis, hypatia, psmn, eva, unity, cropdiversityhpc, nygc, fgcz, conda, crg, singularity, mpcdf_viper, pe2, self_hosted_runner, tufts, uw_hyak_pedslabs, debug, genouest, cbe, unsw_katana, gitpod, phoenix, seawulf, uod_hpc, fub_curta, uct_hpc, aws_tower, binac, fsu_draco]
+Apr-09 16:46:31.703 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=2 by global default
+Apr-09 16:46:31.713 [main] INFO  nextflow.cli.CmdRun - Launching `/Users/famke/01-pm4onco/repositories/variantconsensus/tests/../main.nf` [condescending_neumann] DSL2 - revision: 755d5373df
+Apr-09 16:46:31.714 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins declared=[nf-schema@2.3.0]
+Apr-09 16:46:31.715 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
+Apr-09 16:46:31.715 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins resolved requirement=[nf-schema@2.3.0]
+Apr-09 16:46:31.715 [main] DEBUG nextflow.plugin.PluginUpdater - Installing plugin nf-schema version: 2.3.0
+Apr-09 16:46:31.720 [main] INFO  org.pf4j.AbstractPluginManager - Plugin 'nf-schema@2.3.0' resolved
+Apr-09 16:46:31.721 [main] INFO  org.pf4j.AbstractPluginManager - Start plugin 'nf-schema@2.3.0'
+Apr-09 16:46:31.725 [main] DEBUG nextflow.plugin.BasePlugin - Plugin started nf-schema@2.3.0
+Apr-09 16:46:31.755 [main] DEBUG nextflow.Session - Session UUID: ebb6999d-a441-4094-ad62-2ca5040f90bd
+Apr-09 16:46:31.755 [main] DEBUG nextflow.Session - Run name: condescending_neumann
+Apr-09 16:46:31.756 [main] DEBUG nextflow.Session - Executor pool size: 8
+Apr-09 16:46:31.760 [main] DEBUG nextflow.file.FilePorter - File porter settings maxRetries=3; maxTransfers=50; pollTimeout=null
+Apr-09 16:46:31.763 [main] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'FileTransfer' minSize=10; maxSize=24; workQueue=LinkedBlockingQueue[10000]; allowCoreThreadTimeout=false
+Apr-09 16:46:31.774 [main] DEBUG nextflow.cli.CmdRun - 
+  Version: 24.10.4 build 5934
+  Created: 20-01-2025 16:47 UTC (17:47 CEST)
+  System: Mac OS X 15.0.1
+  Runtime: Groovy 4.0.23 on OpenJDK 64-Bit Server VM 17.0.14+7-LTS
+  Encoding: UTF-8 (UTF-8)
+  Process: 70197@butternut_squash.medizin.uni-tuebingen.de [134.2.116.48]
+  CPUs: 8 - Mem: 16 GB (49.9 MB) - Swap: 4 GB (998.6 MB)
+Apr-09 16:46:31.783 [main] DEBUG nextflow.Session - Work-dir: /Users/famke/01-pm4onco/repositories/variantconsensus/.nf-test/tests/f05c1aa129c204b7d145bd98dae2f44c/work [Mac OS X]
+Apr-09 16:46:31.783 [main] DEBUG nextflow.Session - Script base path does not exist or is not a directory: /Users/famke/01-pm4onco/repositories/variantconsensus/bin
+Apr-09 16:46:31.793 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
+Apr-09 16:46:31.799 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
+Apr-09 16:46:31.802 [main] DEBUG nextflow.Session - Observer factory: ValidationObserverFactory
+Apr-09 16:46:31.848 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
+Apr-09 16:46:31.855 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 9; maxThreads: 1000
+Apr-09 16:46:31.888 [main] DEBUG nextflow.Session - Session start
+Apr-09 16:46:31.889 [main] DEBUG nextflow.trace.TraceFileObserver - Workflow started -- trace file: /Users/famke/01-pm4onco/repositories/variantconsensus/.nf-test/tests/f05c1aa129c204b7d145bd98dae2f44c/meta/trace.csv
+Apr-09 16:46:31.980 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+Apr-09 16:46:32.314 [main] DEBUG nextflow.script.IncludeDef - Loading included plugin extensions with names: [paramsSummaryMap:paramsSummaryMap]; plugin Id: nf-schema
+Apr-09 16:46:32.598 [main] DEBUG nextflow.script.IncludeDef - Loading included plugin extensions with names: [paramsSummaryLog:paramsSummaryLog]; plugin Id: nf-schema
+Apr-09 16:46:32.598 [main] DEBUG nextflow.script.IncludeDef - Loading included plugin extensions with names: [validateParameters:validateParameters]; plugin Id: nf-schema
+Apr-09 16:46:32.600 [main] DEBUG nextflow.script.IncludeDef - Loading included plugin extensions with names: [paramsSummaryMap:paramsSummaryMap]; plugin Id: nf-schema
+Apr-09 16:46:32.600 [main] DEBUG nextflow.script.IncludeDef - Loading included plugin extensions with names: [samplesheetToList:samplesheetToList]; plugin Id: nf-schema
+Apr-09 16:46:32.744 [main] DEBUG nextflow.script.IncludeDef - Loading included plugin extensions with names: [paramsSummaryLog:paramsSummaryLog]; plugin Id: nf-schema
+Apr-09 16:46:32.745 [main] DEBUG nextflow.script.IncludeDef - Loading included plugin extensions with names: [validateParameters:validateParameters]; plugin Id: nf-schema
+Apr-09 16:46:32.746 [main] DEBUG nextflow.script.IncludeDef - Loading included plugin extensions with names: [paramsSummaryMap:paramsSummaryMap]; plugin Id: nf-schema
+Apr-09 16:46:32.747 [main] DEBUG nextflow.script.IncludeDef - Loading included plugin extensions with names: [samplesheetToList:samplesheetToList]; plugin Id: nf-schema
+Apr-09 16:46:32.878 [main] INFO  nextflow.Nextflow - [1mInput/output options[0m
+  [0;34minput                       : [0;32m/Users/famke/01-pm4onco/repositories/variantconsensus/tests/test-samplesheet.csv[0m
+  [0;34moutdir                      : [0;32m/Users/famke/01-pm4onco/repositories/variantconsensus/.nf-test/tests/f05c1aa129c204b7d145bd98dae2f44c/output[0m
+
+[1mInstitutional config options[0m
+  [0;34mconfig_profile_name         : [0;32mTest profile[0m
+  [0;34mconfig_profile_description  : [0;32mMinimal test dataset to check pipeline function[0m
+
+[1mGeneric options[0m
+  [0;34mpipelines_testdata_base_path: [0;32m${projectDir}/tests/[0m
+  [0;34mtrace_report_suffix         : [0;32m2025-04-09_16-46-31[0m
+
+[1mCore Nextflow options[0m
+  [0;34mrunName                     : [0;32mcondescending_neumann[0m
+  [0;34mcontainerEngine             : [0;32mdocker[0m
+  [0;34mlaunchDir                   : [0;32m/Users/famke/01-pm4onco/repositories/variantconsensus/.nf-test/tests/f05c1aa129c204b7d145bd98dae2f44c[0m
+  [0;34mworkDir                     : [0;32m/Users/famke/01-pm4onco/repositories/variantconsensus/.nf-test/tests/f05c1aa129c204b7d145bd98dae2f44c/work[0m
+  [0;34mprojectDir                  : [0;32m/Users/famke/01-pm4onco/repositories/variantconsensus[0m
+  [0;34muserName                    : [0;32mfamke[0m
+  [0;34mprofile                     : [0;32mtest,docker[0m
+  [0;34mconfigFiles                 : [0;32m/Users/famke/01-pm4onco/repositories/variantconsensus/nextflow.config, /Users/famke/01-pm4onco/repositories/variantconsensus/nextflow.config, /Users/famke/01-pm4onco/repositories/variantconsensus/tests/nextflow.config, /Users/famke/01-pm4onco/repositories/variantconsensus/conf/test.config[0m
+
+!! Only displaying parameters that differ from the pipeline defaults !!
+-[2m----------------------------------------------------[0m-
+Apr-09 16:46:32.879 [main] DEBUG n.validation.ValidationExtension - Starting parameters validation
+Apr-09 16:46:32.957 [main] DEBUG nextflow.validation.SchemaEvaluator - Started validating /Users/famke/01-pm4onco/repositories/variantconsensus/tests/test-samplesheet.csv
+Apr-09 16:46:32.990 [main] DEBUG nextflow.validation.SchemaEvaluator - Validation of file '/Users/famke/01-pm4onco/repositories/variantconsensus/tests/test-samplesheet.csv' passed!
+Apr-09 16:46:32.991 [main] DEBUG n.v.FormatDirectoryPathEvaluator - Cloud blob storage paths are not supported by 'FormatDirectoryPathEvaluator': 's3://ngi-igenomes/igenomes/'
+Apr-09 16:46:32.991 [main] DEBUG n.validation.ValidationExtension - Finishing parameters validation
+Apr-09 16:46:33.077 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_medium` matches labels `process_medium` for process with name QBICPIPELINES_VARIANTCONSENSUS:VARIANTCONSENSUS:FILTER_SNPS
+Apr-09 16:46:33.079 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:.*` matches process QBICPIPELINES_VARIANTCONSENSUS:VARIANTCONSENSUS:FILTER_SNPS
+Apr-09 16:46:33.079 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:FILTER_SNPS` matches process QBICPIPELINES_VARIANTCONSENSUS:VARIANTCONSENSUS:FILTER_SNPS
+Apr-09 16:46:33.080 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:.*` matches process QBICPIPELINES_VARIANTCONSENSUS:VARIANTCONSENSUS:FILTER_SNPS
+Apr-09 16:46:33.081 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:.*` matches process QBICPIPELINES_VARIANTCONSENSUS:VARIANTCONSENSUS:FILTER_SNPS
+Apr-09 16:46:33.088 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Apr-09 16:46:33.088 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Apr-09 16:46:33.091 [main] DEBUG nextflow.executor.Executor - [warm up] executor > local
+Apr-09 16:46:33.094 [main] DEBUG n.processor.LocalPollingMonitor - Creating local task monitor for executor 'local' > cpus=8; memory=16 GB; capacity=8; pollInterval=100ms; dumpInterval=5m
+Apr-09 16:46:33.096 [main] DEBUG n.processor.TaskPollingMonitor - >>> barrier register (monitor: local)
+Apr-09 16:46:33.134 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_medium` matches labels `process_medium` for process with name QBICPIPELINES_VARIANTCONSENSUS:VARIANTCONSENSUS:FILTER_INDELS
+Apr-09 16:46:33.134 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:.*` matches process QBICPIPELINES_VARIANTCONSENSUS:VARIANTCONSENSUS:FILTER_INDELS
+Apr-09 16:46:33.135 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:FILTER_INDELS` matches process QBICPIPELINES_VARIANTCONSENSUS:VARIANTCONSENSUS:FILTER_INDELS
+Apr-09 16:46:33.135 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:.*` matches process QBICPIPELINES_VARIANTCONSENSUS:VARIANTCONSENSUS:FILTER_INDELS
+Apr-09 16:46:33.135 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:.*` matches process QBICPIPELINES_VARIANTCONSENSUS:VARIANTCONSENSUS:FILTER_INDELS
+Apr-09 16:46:33.137 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Apr-09 16:46:33.137 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Apr-09 16:46:33.206 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_single` matches labels `process_single` for process with name QBICPIPELINES_VARIANTCONSENSUS:VARIANTCONSENSUS:MULTIQC
+Apr-09 16:46:33.207 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:MULTIQC` matches process QBICPIPELINES_VARIANTCONSENSUS:VARIANTCONSENSUS:MULTIQC
+Apr-09 16:46:33.207 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:.*` matches process QBICPIPELINES_VARIANTCONSENSUS:VARIANTCONSENSUS:MULTIQC
+Apr-09 16:46:33.208 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:.*` matches process QBICPIPELINES_VARIANTCONSENSUS:VARIANTCONSENSUS:MULTIQC
+Apr-09 16:46:33.209 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Apr-09 16:46:33.209 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Apr-09 16:46:33.217 [main] DEBUG nextflow.Session - Config process names validation disabled as requested
+Apr-09 16:46:33.218 [main] DEBUG nextflow.Session - Igniting dataflow network (13)
+Apr-09 16:46:33.219 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > QBICPIPELINES_VARIANTCONSENSUS:VARIANTCONSENSUS:FILTER_SNPS
+Apr-09 16:46:33.219 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > QBICPIPELINES_VARIANTCONSENSUS:VARIANTCONSENSUS:FILTER_INDELS
+Apr-09 16:46:33.223 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > QBICPIPELINES_VARIANTCONSENSUS:VARIANTCONSENSUS:MULTIQC
+Apr-09 16:46:33.223 [main] DEBUG nextflow.script.ScriptRunner - Parsed script files:
+  Script_d4491beb51d16084: /Users/famke/01-pm4onco/repositories/variantconsensus/./workflows/variantconsensus.nf
+  Script_4f612cfd8c52e8cd: /Users/famke/01-pm4onco/repositories/variantconsensus/./subworkflows/local/utils_nfcore_variantconsensus_pipeline/../../nf-core/utils_nextflow_pipeline/main.nf
+  Script_0fdb2e5f8575be0c: /Users/famke/01-pm4onco/repositories/variantconsensus/./workflows/../modules/nf-core/multiqc/main.nf
+  Script_215a636da7ab24a2: /Users/famke/01-pm4onco/repositories/variantconsensus/./subworkflows/local/utils_nfcore_variantconsensus_pipeline/../../nf-core/utils_nfschema_plugin/main.nf
+  Script_5c4e8d4051efa81e: /Users/famke/01-pm4onco/repositories/variantconsensus/./workflows/../subworkflows/local/utils_nfcore_variantconsensus_pipeline/../../nf-core/utils_nfcore_pipeline/main.nf
+  Script_3448e763138df75c: /Users/famke/01-pm4onco/repositories/variantconsensus/./workflows/../modules/nf-core/bcftools/view/main.nf
+  Script_2c085ce92b423d85: /Users/famke/01-pm4onco/repositories/variantconsensus/./workflows/../subworkflows/local/utils_nfcore_variantconsensus_pipeline/main.nf
+  Script_50d465e4bae4fcff: /Users/famke/01-pm4onco/repositories/variantconsensus/main.nf
+Apr-09 16:46:33.223 [main] DEBUG nextflow.script.ScriptRunner - > Awaiting termination 
+Apr-09 16:46:33.224 [main] DEBUG nextflow.Session - Session await
+Apr-09 16:46:33.274 [Actor Thread 2] DEBUG nextflow.sort.BigSort - Sort completed -- entries: 1; slices: 1; internal sort time: 0.0 s; external sort time: 0.012 s; total time: 0.012 s
+Apr-09 16:46:33.275 [Actor Thread 5] DEBUG nextflow.sort.BigSort - Sort completed -- entries: 1; slices: 1; internal sort time: 0.001 s; external sort time: 0.012 s; total time: 0.013 s
+Apr-09 16:46:33.278 [Actor Thread 5] DEBUG nextflow.file.FileCollector - Saved collect-files list to: /Users/famke/01-pm4onco/repositories/variantconsensus/.nf-test/tests/f05c1aa129c204b7d145bd98dae2f44c/work/collect-file/bcbc828897f023fbcea241f14d7c7743
+Apr-09 16:46:33.278 [Actor Thread 2] DEBUG nextflow.file.FileCollector - Saved collect-files list to: /Users/famke/01-pm4onco/repositories/variantconsensus/.nf-test/tests/f05c1aa129c204b7d145bd98dae2f44c/work/collect-file/ab16704649eedd650d6e2e7c8adee708
+Apr-09 16:46:33.284 [Actor Thread 2] DEBUG nextflow.file.FileCollector - Deleting file collector temp dir: /var/folders/6r/tg5ddtfd68l0twgv17dznsj40000gp/T/nxf-13283257257307545744
+Apr-09 16:46:33.284 [Actor Thread 5] DEBUG nextflow.file.FileCollector - Deleting file collector temp dir: /var/folders/6r/tg5ddtfd68l0twgv17dznsj40000gp/T/nxf-4228217759365905365
+Apr-09 16:46:33.349 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Apr-09 16:46:33.350 [Task submitter] INFO  nextflow.Session - [88/4f53ee] Submitted process > QBICPIPELINES_VARIANTCONSENSUS:VARIANTCONSENSUS:FILTER_SNPS (t20)
+Apr-09 16:46:33.356 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Apr-09 16:46:33.356 [Task submitter] INFO  nextflow.Session - [38/28a8e6] Submitted process > QBICPIPELINES_VARIANTCONSENSUS:VARIANTCONSENSUS:FILTER_INDELS (t20)
+Apr-09 16:46:35.121 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 1; name: QBICPIPELINES_VARIANTCONSENSUS:VARIANTCONSENSUS:FILTER_INDELS (t20); status: COMPLETED; exit: 0; error: -; workDir: /Users/famke/01-pm4onco/repositories/variantconsensus/.nf-test/tests/f05c1aa129c204b7d145bd98dae2f44c/work/38/28a8e69ddf1dec7ee96266642ed92c]
+Apr-09 16:46:35.122 [Task monitor] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'TaskFinalizer' minSize=10; maxSize=24; workQueue=LinkedBlockingQueue[10000]; allowCoreThreadTimeout=false
+Apr-09 16:46:35.203 [TaskFinalizer-1] DEBUG nextflow.processor.TaskProcessor - Process QBICPIPELINES_VARIANTCONSENSUS:VARIANTCONSENSUS:FILTER_INDELS > Skipping output binding because one or more optional files are missing: fileoutparam<2:1>
+Apr-09 16:46:35.211 [TaskFinalizer-1] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'PublishDir' minSize=10; maxSize=24; workQueue=LinkedBlockingQueue[10000]; allowCoreThreadTimeout=false
+Apr-09 16:46:35.383 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 2; name: QBICPIPELINES_VARIANTCONSENSUS:VARIANTCONSENSUS:FILTER_SNPS (t20); status: COMPLETED; exit: 0; error: -; workDir: /Users/famke/01-pm4onco/repositories/variantconsensus/.nf-test/tests/f05c1aa129c204b7d145bd98dae2f44c/work/88/4f53eec5092499ce81184cb156685f]
+Apr-09 16:46:35.390 [TaskFinalizer-2] DEBUG nextflow.processor.TaskProcessor - Process QBICPIPELINES_VARIANTCONSENSUS:VARIANTCONSENSUS:FILTER_SNPS > Skipping output binding because one or more optional files are missing: fileoutparam<2:1>
+Apr-09 16:46:35.400 [Actor Thread 8] DEBUG nextflow.sort.BigSort - Sort completed -- entries: 3; slices: 1; internal sort time: 0.002 s; external sort time: 0.001 s; total time: 0.003 s
+Apr-09 16:46:35.402 [Actor Thread 8] DEBUG nextflow.file.FileCollector - Saved collect-files list to: /Users/famke/01-pm4onco/repositories/variantconsensus/.nf-test/tests/f05c1aa129c204b7d145bd98dae2f44c/work/collect-file/02a1a66a48f9f39d35f9733e43d296e6
+Apr-09 16:46:35.404 [Actor Thread 8] DEBUG nextflow.file.FileCollector - Deleting file collector temp dir: /var/folders/6r/tg5ddtfd68l0twgv17dznsj40000gp/T/nxf-4763852674610788420
+Apr-09 16:46:35.423 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Apr-09 16:46:35.423 [Task submitter] INFO  nextflow.Session - [b0/af4323] Submitted process > QBICPIPELINES_VARIANTCONSENSUS:VARIANTCONSENSUS:MULTIQC
+Apr-09 16:46:40.458 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 3; name: QBICPIPELINES_VARIANTCONSENSUS:VARIANTCONSENSUS:MULTIQC; status: COMPLETED; exit: 0; error: -; workDir: /Users/famke/01-pm4onco/repositories/variantconsensus/.nf-test/tests/f05c1aa129c204b7d145bd98dae2f44c/work/b0/af4323d4b7fee694c099c629f417b7]
+Apr-09 16:46:40.462 [TaskFinalizer-3] DEBUG nextflow.processor.TaskProcessor - Process QBICPIPELINES_VARIANTCONSENSUS:VARIANTCONSENSUS:MULTIQC > Skipping output binding because one or more optional files are missing: fileoutparam<2>
+Apr-09 16:46:40.465 [main] DEBUG nextflow.Session - Session await > all processes finished
+Apr-09 16:46:40.563 [Task monitor] DEBUG n.processor.TaskPollingMonitor - <<< barrier arrives (monitor: local) - terminating tasks monitor poll loop
+Apr-09 16:46:40.564 [main] DEBUG nextflow.Session - Session await > all barriers passed
+Apr-09 16:46:40.566 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'TaskFinalizer' shutdown completed (hard=false)
+Apr-09 16:46:40.566 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'PublishDir' shutdown completed (hard=false)
+Apr-09 16:46:40.571 [main] INFO  nextflow.Nextflow - -[0;35m[qbic-pipelines/variantconsensus][0;32m Pipeline completed successfully[0m-
+Apr-09 16:46:40.573 [main] DEBUG n.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=3; failedCount=0; ignoredCount=0; cachedCount=0; pendingCount=0; submittedCount=0; runningCount=0; retriesCount=0; abortedCount=0; succeedDuration=11.8s; failedDuration=0ms; cachedDuration=0ms;loadCpus=0; loadMemory=0; peakRunning=2; peakCpus=4; peakMemory=6 GB; ]
+Apr-09 16:46:40.574 [main] DEBUG nextflow.trace.TraceFileObserver - Workflow completed -- saving trace file
+Apr-09 16:46:40.575 [main] DEBUG nextflow.cache.CacheDB - Closing CacheDB done
+Apr-09 16:46:40.587 [main] INFO  org.pf4j.AbstractPluginManager - Stop plugin 'nf-schema@2.3.0'
+Apr-09 16:46:40.587 [main] DEBUG nextflow.plugin.BasePlugin - Plugin stopped nf-schema
+Apr-09 16:46:40.587 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'FileTransfer' shutdown completed (hard=false)
+Apr-09 16:46:40.588 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye

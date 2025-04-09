@@ -1,0 +1,7 @@
+FILTER_INDELS:
+  bcftools: 1.21
+FILTER_SNPS:
+  bcftools: 1.21
+Workflow:
+    qbic-pipelines/variantconsensus: v1.0.0dev
+    Nextflow: 24.10.4
