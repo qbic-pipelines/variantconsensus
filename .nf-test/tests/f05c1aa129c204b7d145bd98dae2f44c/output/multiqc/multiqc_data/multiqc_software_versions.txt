@@ -1,4 +1,0 @@
-Sample	bcftools	qbic-pipelines/variantconsensus	Nextflow
-FILTER_INDELS	1.21		
-FILTER_SNPS	1.21		
-Workflow		v1.0.0dev	24.10.4

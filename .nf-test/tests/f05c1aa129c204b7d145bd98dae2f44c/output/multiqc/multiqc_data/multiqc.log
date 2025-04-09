@@ -1,6 +1,0 @@
-[2025-04-09 14:46:37,865] multiqc.config                                     [INFO   ]  Loading config settings from: multiqc_config.yml
-[2025-04-09 14:46:38,004] multiqc.core.version_check                         [WARNING]  MultiQC Version v1.28 now available!
-[2025-04-09 14:46:38,005] multiqc.core.file_search                           [INFO   ]  Search path: /Users/famke/01-pm4onco/repositories/variantconsensus/.nf-test/tests/f05c1aa129c204b7d145bd98dae2f44c/work/b0/af4323d4b7fee694c099c629f417b7
-[2025-04-09 14:46:38,051] multiqc.modules.custom_content.custom_content      [INFO   ]  qbic-pipelines-variantconsensus-methods-description: Found 1 sample (html)
-[2025-04-09 14:46:38,051] multiqc.modules.custom_content.custom_content      [INFO   ]  qbic-pipelines-variantconsensus-summary: Found 1 sample (html)
-[2025-04-09 14:46:38,053] multiqc.core.write_results                         [INFO   ]  Rendering plots. Export plots to formats png, svg, pdf is requested, so it might take a while. To disable plot export, set `export_plots: false` in config, or remove the `--export-plots` command line flag
