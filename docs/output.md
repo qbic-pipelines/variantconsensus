@@ -12,8 +12,19 @@ The directories listed below will be created in the results directory after the 
 
 The pipeline is built using [Nextflow](https://www.nextflow.io/) and processes data using the following steps:
 
+- [bcftools/view](#bcftools-view) - Divide VCFs into SNPs and INDELs
 - [MultiQC](#multiqc) - Aggregate report describing results and QC from the whole pipeline
 - [Pipeline information](#pipeline-information) - Report metrics generated during the workflow execution
+
+### BCFtools view
+
+<details markdown="1">
+<summary>Output files</summary>
+
+- `bcftools/view/{caller}/*.snps.{vcf.gz,vcf.gz.tbi}`: vcf file and its index containing SNPs
+- `bcftools/view/{caller}/*.indels.{vcf.gz,vcf.gz.tbi}`: vcf file and its index containing INDELs
+
+</details>
 
 ### MultiQC
 
