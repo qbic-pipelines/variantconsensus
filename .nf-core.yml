@@ -32,11 +32,12 @@ lint:
     - .github/workflows/awsfulltest.yml
 
 template:
+  prefix: qbic-pipelines
   org: qbic-pipelines
   name: variantconsensus
   description: This pipeline takes multiple VCFs from different callers and creates
     a consensus-based VCF.
-  author: "Famke B\xE4uerle"
+  author: "Famke Baeuerle"
   version: 1.0.0dev
   force: true
   outdir: .
