@@ -1,13 +1,19 @@
 {
     "Params: default - stub": {
         "content": [
-            3,
+            5,
             {
-                "FILTER_INDELS": {
-                    "bcftools": 1.21
-                },
                 "FILTER_SNPS": {
                     "bcftools": 1.21
+                },
+                "ISEC_SNPS": {
+                    "bcftools": 1.21
+                },
+                "PASS_SNPS": {
+                    "bcftools": 1.21
+                },
+                "TABIX_SNPS": {
+                    "tabix": 1.21
                 },
                 "Workflow": {
                     "qbic-pipelines/variantconsensus": "v1.0.0dev"
@@ -15,43 +21,80 @@
             },
             [
                 "bcftools",
+                "bcftools/pass",
+                "bcftools/pass/A.t5.snps.consensus.pass.vcf.gz",
+                "bcftools/pass/A.t5.snps.consensus.pass.vcf.gz.tbi",
+                "bcftools/pass/versions.yml",
                 "bcftools/view",
                 "bcftools/view/muse",
-                "bcftools/view/muse/t5.muse.indels.vcf.gz",
-                "bcftools/view/muse/t5.muse.indels.vcf.gz.tbi",
                 "bcftools/view/muse/t5.muse.snps.vcf.gz",
                 "bcftools/view/muse/t5.muse.snps.vcf.gz.tbi",
                 "bcftools/view/muse/versions.yml",
+                "bgzip",
+                "bgzip/snps",
+                "bgzip/snps/t5.vcf.gz",
+                "bgzip/snps/t5.vcf.gz.tbi",
+                "bgzip/snps/versions.yml",
+                "isec",
+                "isec/t5.snps",
+                "isec/t5.snps/0000.vcf.gz",
+                "isec/t5.snps/0000.vcf.gz.tbi",
+                "isec/t5.snps/0001.vcf.gz",
+                "isec/t5.snps/0001.vcf.gz.tbi",
+                "isec/t5.snps/A.t5.snps.consensus.vcf",
+                "isec/t5.snps/README.txt",
+                "isec/t5.snps/sites.txt",
                 "multiqc",
                 "multiqc/multiqc_data",
                 "multiqc/multiqc_plots",
                 "multiqc/multiqc_report.html",
                 "pipeline_info",
+                "pipeline_info/params_2025-04-10_15-27-48.json",
                 "pipeline_info/variantconsensus_software_mqc_versions.yml"
             ],
             [
-                "versions.yml:md5,3ad9c2a4cc23efb3315075e1b3a8212d"
-            ],
-            [
-                "t5.muse.indels.vcf.gz:md5,68b329da9893e34099c7d8ad5cb9c940",
-                "t5.muse.snps.vcf.gz:md5,68b329da9893e34099c7d8ad5cb9c940"
+                "A.t5.snps.consensus.pass.vcf.gz:md5,68b329da9893e34099c7d8ad5cb9c940",
+                "A.t5.snps.consensus.pass.vcf.gz.tbi:md5,d41d8cd98f00b204e9800998ecf8427e",
+                "versions.yml:md5,1a00c1e02803ea5a955dacf1fed8c45f",
+                "t5.muse.snps.vcf.gz:md5,68b329da9893e34099c7d8ad5cb9c940",
+                "t5.muse.snps.vcf.gz.tbi:md5,d41d8cd98f00b204e9800998ecf8427e",
+                "versions.yml:md5,c795ab4eb72e3615f3a73112ee4c38fb",
+                "t5.vcf.gz:md5,68b329da9893e34099c7d8ad5cb9c940",
+                "t5.vcf.gz.tbi:md5,d41d8cd98f00b204e9800998ecf8427e",
+                "versions.yml:md5,bb2eca4b05afbea15e8d9b2ca77f376b",
+                "0000.vcf.gz:md5,68b329da9893e34099c7d8ad5cb9c940",
+                "0000.vcf.gz.tbi:md5,d41d8cd98f00b204e9800998ecf8427e",
+                "0001.vcf.gz:md5,68b329da9893e34099c7d8ad5cb9c940",
+                "0001.vcf.gz.tbi:md5,d41d8cd98f00b204e9800998ecf8427e",
+                "A.t5.snps.consensus.vcf:md5,d41d8cd98f00b204e9800998ecf8427e",
+                "README.txt:md5,d41d8cd98f00b204e9800998ecf8427e",
+                "sites.txt:md5,d41d8cd98f00b204e9800998ecf8427e",
+                "multiqc_report.html:md5,d41d8cd98f00b204e9800998ecf8427e",
+                "params_2025-04-10_15-27-48.json:md5,fd399705d561d23e2e912e344462b1c9",
+                "variantconsensus_software_mqc_versions.yml:md5,04de78e92360ba75317ce2bcc11738cf"
             ]
         ],
         "meta": {
             "nf-test": "0.9.2",
             "nextflow": "24.10.4"
         },
-        "timestamp": "2025-04-10T10:59:44.278567"
+        "timestamp": "2025-04-10T15:28:08.160843"
     },
     "Params: default": {
         "content": [
-            3,
+            5,
             {
-                "FILTER_INDELS": {
-                    "bcftools": 1.21
-                },
                 "FILTER_SNPS": {
                     "bcftools": 1.21
+                },
+                "ISEC_SNPS": {
+                    "bcftools": 1.21
+                },
+                "PASS_SNPS": {
+                    "bcftools": 1.21
+                },
+                "TABIX_SNPS": {
+                    "tabix": 1.21
                 },
                 "Workflow": {
                     "qbic-pipelines/variantconsensus": "v1.0.0dev"
@@ -59,13 +102,26 @@
             },
             [
                 "bcftools",
+                "bcftools/pass",
+                "bcftools/pass/A.t5.snps.consensus.pass.vcf.gz",
+                "bcftools/pass/A.t5.snps.consensus.pass.vcf.gz.tbi",
+                "bcftools/pass/versions.yml",
                 "bcftools/view",
                 "bcftools/view/muse",
-                "bcftools/view/muse/t5.muse.indels.vcf.gz",
-                "bcftools/view/muse/t5.muse.indels.vcf.gz.tbi",
                 "bcftools/view/muse/t5.muse.snps.vcf.gz",
                 "bcftools/view/muse/t5.muse.snps.vcf.gz.tbi",
                 "bcftools/view/muse/versions.yml",
+                "bgzip",
+                "bgzip/snps",
+                "bgzip/snps/t5.vcf.gz",
+                "bgzip/snps/t5.vcf.gz.tbi",
+                "bgzip/snps/versions.yml",
+                "isec",
+                "isec/t5.snps",
+                "isec/t5.snps/0000.vcf",
+                "isec/t5.snps/0001.vcf",
+                "isec/t5.snps/README.txt",
+                "isec/t5.snps/sites.txt",
                 "multiqc",
                 "multiqc/multiqc_data",
                 "multiqc/multiqc_data/multiqc.log",
@@ -78,18 +134,27 @@
                 "pipeline_info/variantconsensus_software_mqc_versions.yml"
             ],
             [
-                "versions.yml:md5,3ad9c2a4cc23efb3315075e1b3a8212d",
+                "versions.yml:md5,1a00c1e02803ea5a955dacf1fed8c45f",
+                "versions.yml:md5,c795ab4eb72e3615f3a73112ee4c38fb",
+                "versions.yml:md5,bb2eca4b05afbea15e8d9b2ca77f376b",
+                "0000.vcf:md5,fb3d1fe2e13abb27759b947a6e4abdde",
+                "0001.vcf:md5,5cf0bb557193cf719b531ebca3a8c20e",
+                "README.txt:md5,4e32d8ca160d4ea004be3e6b13253d8f",
+                "sites.txt:md5,ec44fcb80ac7ef7b5543176f359d25fa",
                 "multiqc_citations.txt:md5,4c806e63a283ec1b7e78cdae3a923d4f"
             ],
             [
-                "t5.muse.indels.vcf.gz:md5,d41d8cd98f00b204e9800998ecf8427e",
-                "t5.muse.snps.vcf.gz:md5,66e58a9846ab6aa0a9f256f108337f9c"
+                "A.t5.snps.consensus.pass.vcf.gz:md5,271c535cee4a7cb3bfb1be5fbaace233",
+                "t5.muse.snps.vcf.gz:md5,66e58a9846ab6aa0a9f256f108337f9c",
+                "t5.vcf.gz:md5,a9d0016bdee16f18dd1f83a5a052358f",
+                "0000.vcf:md5,a9d0016bdee16f18dd1f83a5a052358f",
+                "0001.vcf:md5,66e58a9846ab6aa0a9f256f108337f9c"
             ]
         ],
         "meta": {
             "nf-test": "0.9.2",
             "nextflow": "24.10.4"
         },
-        "timestamp": "2025-04-10T10:59:29.067542"
+        "timestamp": "2025-04-10T15:27:43.847069"
     }
 }
