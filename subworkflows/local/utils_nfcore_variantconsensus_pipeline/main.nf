@@ -77,9 +77,9 @@ workflow PIPELINE_INITIALISATION {
         .map {
             meta, vcf, vcf_tbi ->
                 if (!vcf_tbi) {
-                    return [ meta.id + meta.varianttype, meta + [ no_index:true ], [ vcf ] ]
+                    return [ meta.patient + meta.sample + meta.caller + meta.varianttype, meta + [ no_index:true ] + [ id: meta.patient + '_' + meta.sample], [ vcf ] ]
                 } else {
-                    return [ meta.id + meta.varianttype, meta + [ no_index:false ], [ vcf, vcf_tbi ] ]
+                    return [ meta.patient + meta.sample + meta.caller + meta.varianttype, meta + [ no_index:false ] + [ id: meta.patient + '_' + meta.sample], [ vcf, vcf_tbi ] ]
                 }
         }
         .groupTuple()

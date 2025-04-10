@@ -6,6 +6,9 @@
 // Used Modules
 include { BCFTOOLS_VIEW as FILTER_SNPS   } from '../modules/nf-core/bcftools/view/main'
 include { BCFTOOLS_VIEW as FILTER_INDELS } from '../modules/nf-core/bcftools/view/main'
+include { BCFTOOLS_ISEC as ISEC_SNPS     } from '../modules/nf-core/bcftools/isec/main'
+include { TABIX_BGZIPTABIX as TABIX_SNPS } from '../modules/nf-core/tabix/bgziptabix/main'
+include { BCFTOOLS_VIEW as PASS_SNPS     } from '../modules/nf-core/bcftools/view/main'
 
 // Template Modules
 include { MULTIQC                        } from '../modules/nf-core/multiqc/main'
@@ -29,56 +32,110 @@ workflow VARIANTCONSENSUS {
     ch_versions = Channel.empty()
     ch_multiqc_files = Channel.empty()
 
-    // Check if the input contains both SNPs and INDELs
-    ch_snps = ch_samplesheet.filter { meta, vcfs ->
-        meta.containsKey('varianttype') && meta.varianttype == 'snps'
-    }.map { meta, vcfs -> [meta, vcfs[0], vcfs[1]] }
+    ch_both = ch_samplesheet.filter { meta, _files ->
+            meta.varianttype != 'snps' && meta.varianttype != 'indels'
+        }
 
-    ch_indels = ch_samplesheet.filter { meta, vcfs ->
-        meta.containsKey('varianttype') && meta.varianttype == 'indels'
-    }.map { meta, vcfs -> [meta, vcfs[0], vcfs[1]] }
+    ch_snps = ch_samplesheet.filter { meta, _files ->
+            meta.varianttype == 'snps'
+        }
 
-    ch_unknown = ch_samplesheet.filter { meta, vcfs ->
-        meta.containsKey('varianttype') && meta.varianttype == 'both'
-    }
+    // TODO: Uncomment indel
+    // ch_indels = ch_samplesheet.filter { meta, _files ->
+    //         meta.varianttype == 'indels'
+    //     }
 
     // FILTER_SNPS to divide into SNPs and INDELs
     FILTER_SNPS(
-        ch_unknown.map { meta, vcfs -> [meta, vcfs[0], vcfs[1]] },
+        ch_both.map { meta, vcfs -> [meta, vcfs[0], vcfs[1]] },
         [],
         [],
         [],
     )
 
-    ch_all_snps = ch_snps.mix(
-        FILTER_SNPS.out.vcf.join(FILTER_SNPS.out.tbi)
-            .map { meta, vcf, tbi -> [ meta.subMap(meta.keySet() - ['varianttype']) + [ 'varianttype': 'snps' ], vcf, tbi ] }
-        )
+    ch_divided_snps = FILTER_SNPS.out.vcf.join(FILTER_SNPS.out.tbi)
+            .map { meta, vcf, tbi -> [ meta.subMap(meta.keySet() - ['varianttype']) + [ 'varianttype': 'snps' ], [vcf, tbi] ] }
 
     ch_versions = ch_versions.mix(FILTER_SNPS.out.versions)
 
-    // FILTER_INDELS to divide into SNPs and INDELs
-    FILTER_INDELS(
-        ch_unknown.map { meta, vcfs -> [meta, vcfs[0], vcfs[1]] },
-        [],
-        [],
-        [],
-    )
+    // TODO: uncomment INDEL filter
+    // // FILTER_INDELS to divide into SNPs and INDELs
+    // FILTER_INDELS(
+    //     ch_both.map { meta, vcfs -> [meta, vcfs[0], vcfs[1]] },
+    //     [],
+    //     [],
+    //     [],
+    // )
 
-    ch_all_indels = ch_indels.mix(
-        FILTER_INDELS.out.vcf.join(FILTER_INDELS.out.tbi)
-            .map { meta, vcf, tbi -> [ meta.subMap(meta.keySet() - ['varianttype']) + [ 'varianttype': 'indels' ], vcf, tbi ] }
-        )
+    // ch_all_indels = ch_indels.mix(
+    //     FILTER_INDELS.out.vcf.join(FILTER_INDELS.out.tbi)
+    //         .map { meta, vcf, tbi -> [ meta.subMap(meta.keySet() - ['varianttype']) + [ 'varianttype': 'indels' ], [vcf, tbi] ] }
+    //     )
 
-    ch_versions = ch_versions.mix(FILTER_INDELS.out.versions)
+    // ch_versions = ch_versions.mix(FILTER_INDELS.out.versions)
 
-    ch_all_snps.dump(tag: 'snps-filtered')
-    ch_all_indels.dump(tag: 'indels-filtered')
+    // Group SNPs for ISEC
+    ch_snps_grouped = Channel.empty()
+        .mix(ch_snps, ch_divided_snps)
+        .map { meta, files ->
+            [ [meta.id, meta.sample, meta.varianttype], meta, files[0], files[1] ]}
+        .groupTuple(by: [0])
+        .map { _id, metas, vcfs, tbis ->
+            def meta = metas[0].subMap(metas[0].keySet() - ['caller'])
+            meta = meta + [ 'numFiles': vcfs.flatten().size() ]
+            meta = meta + [ 'consensusFiles': meta.numFiles - 1 ]
+            [meta, vcfs.flatten(), tbis.flatten()]
+        }
 
-    // TODO: BCFTOOLS ISEC for SNP consensus
+    // BCFTOOLS ISEC for SNP consensus
+    // At the moment the implementation is
+    // bcftools view --collapse snps --nfiles +${meta.consensusFiles}
+    // --collapse snps means any SNP records are compatible
+    // --nfiles output positions present in N-1 or more of the files
+    ISEC_SNPS( ch_snps_grouped )
 
+    ISEC_SNPS.out.results
+        .map { meta, dir ->
+            def new_filename = "${meta.patient}.${meta.id}.${meta.varianttype}.consensus.vcf"
+            def copied_file = file("${dir}/${new_filename}")
+
+            if (workflow.stubRun) {
+                // For stub runs, just create an empty file
+                copied_file.text = ''
+            } else {
+                // For actual runs, perform the copy operation
+                def files = dir.listFiles()
+                def original_file = files.find { it.name == '0000.vcf' }
+                if (original_file) {
+                    original_file.copyTo(copied_file)
+                } else {
+                    log.warn "File '0000.vcf' not found in directory ${dir}. Creating an empty file."
+                    copied_file.text = ''
+                }
+            }
+
+            return [meta, copied_file]
+        }
+        .set { ch_intersect_all_snps }
+
+    ch_versions = ch_versions.mix(ISEC_SNPS.out.versions)
 
     // TODO: BCFTOOLS ISEC for INDEL consensus
+
+
+    // Zip and index the SNP consensus VCFs
+    TABIX_SNPS( ch_intersect_all_snps )
+
+    ch_versions = ch_versions.mix(TABIX_SNPS.out.versions)
+
+    // TODO: TABIX for INDEL consensus
+
+    // Filter the SNPs for PASS variants
+    PASS_SNPS( TABIX_SNPS.out.gz_tbi, [], [], [] )
+
+    ch_versions = ch_versions.mix(PASS_SNPS.out.versions)
+
+    // TODO: PASS for INDEL consensus
 
 
     //
