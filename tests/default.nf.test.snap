@@ -1,0 +1,95 @@
+{
+    "Params: default - stub": {
+        "content": [
+            3,
+            {
+                "FILTER_INDELS": {
+                    "bcftools": 1.21
+                },
+                "FILTER_SNPS": {
+                    "bcftools": 1.21
+                },
+                "Workflow": {
+                    "qbic-pipelines/variantconsensus": "v1.0.0dev"
+                }
+            },
+            [
+                "bcftools",
+                "bcftools/view",
+                "bcftools/view/muse",
+                "bcftools/view/muse/t5.muse.indels.vcf.gz",
+                "bcftools/view/muse/t5.muse.indels.vcf.gz.tbi",
+                "bcftools/view/muse/t5.muse.snps.vcf.gz",
+                "bcftools/view/muse/t5.muse.snps.vcf.gz.tbi",
+                "bcftools/view/muse/versions.yml",
+                "multiqc",
+                "multiqc/multiqc_data",
+                "multiqc/multiqc_plots",
+                "multiqc/multiqc_report.html",
+                "pipeline_info",
+                "pipeline_info/variantconsensus_software_mqc_versions.yml"
+            ],
+            [
+                "versions.yml:md5,3ad9c2a4cc23efb3315075e1b3a8212d"
+            ],
+            [
+                "t5.muse.indels.vcf.gz:md5,68b329da9893e34099c7d8ad5cb9c940",
+                "t5.muse.snps.vcf.gz:md5,68b329da9893e34099c7d8ad5cb9c940"
+            ]
+        ],
+        "meta": {
+            "nf-test": "0.9.2",
+            "nextflow": "24.10.4"
+        },
+        "timestamp": "2025-04-10T10:59:44.278567"
+    },
+    "Params: default": {
+        "content": [
+            3,
+            {
+                "FILTER_INDELS": {
+                    "bcftools": 1.21
+                },
+                "FILTER_SNPS": {
+                    "bcftools": 1.21
+                },
+                "Workflow": {
+                    "qbic-pipelines/variantconsensus": "v1.0.0dev"
+                }
+            },
+            [
+                "bcftools",
+                "bcftools/view",
+                "bcftools/view/muse",
+                "bcftools/view/muse/t5.muse.indels.vcf.gz",
+                "bcftools/view/muse/t5.muse.indels.vcf.gz.tbi",
+                "bcftools/view/muse/t5.muse.snps.vcf.gz",
+                "bcftools/view/muse/t5.muse.snps.vcf.gz.tbi",
+                "bcftools/view/muse/versions.yml",
+                "multiqc",
+                "multiqc/multiqc_data",
+                "multiqc/multiqc_data/multiqc.log",
+                "multiqc/multiqc_data/multiqc_citations.txt",
+                "multiqc/multiqc_data/multiqc_data.json",
+                "multiqc/multiqc_data/multiqc_software_versions.txt",
+                "multiqc/multiqc_data/multiqc_sources.txt",
+                "multiqc/multiqc_report.html",
+                "pipeline_info",
+                "pipeline_info/variantconsensus_software_mqc_versions.yml"
+            ],
+            [
+                "versions.yml:md5,3ad9c2a4cc23efb3315075e1b3a8212d",
+                "multiqc_citations.txt:md5,4c806e63a283ec1b7e78cdae3a923d4f"
+            ],
+            [
+                "t5.muse.indels.vcf.gz:md5,d41d8cd98f00b204e9800998ecf8427e",
+                "t5.muse.snps.vcf.gz:md5,66e58a9846ab6aa0a9f256f108337f9c"
+            ]
+        ],
+        "meta": {
+            "nf-test": "0.9.2",
+            "nextflow": "24.10.4"
+        },
+        "timestamp": "2025-04-10T10:59:29.067542"
+    }
+}

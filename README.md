@@ -12,42 +12,32 @@
 
 ## Introduction
 
-**qbic-pipelines/variantconsensus** is a bioinformatics pipeline that ...
+**qbic-pipelines/variantconsensus** is a bioinformatics pipeline that combines results from multiple variant callers to find a consensus VCF.
 
-<!-- TODO nf-core:
-   Complete this sentence with a 2-3 sentence summary of what types of data the pipeline ingests, a brief overview of the
-   major pipeline sections and the types of output it produces. You're giving an overview to someone new
-   to nf-core here, in 15-20 seconds. For an example, see https://github.com/nf-core/rnaseq/blob/master/README.md#introduction
--->
+Inspired by
 
-<!-- TODO nf-core: Include a figure that guides the user through the major workflow steps. Many nf-core
-     workflows use the "tube map" design for that. See https://nf-co.re/docs/contributing/design_guidelines#examples for examples.   -->
-<!-- TODO nf-core: Fill in short bullet-pointed list of the default steps in the pipeline -->2. Present QC for raw reads ([`MultiQC`](http://multiqc.info/))
+> Trevarton, A. J., Chang, J. T., & Symmans, W. F. (2023). Simple combination of multiple somatic variant callers to increase accuracy. Scientific reports, 13(1), 8463.
+
+1. Split provided VCFs into SNPs and INDELS ([bcftools/view](https://samtools.github.io/bcftools/bcftools.html))
+2. Present QC for raw reads ([`MultiQC`](http://multiqc.info/))
 
 ## Usage
 
 > [!NOTE]
 > If you are new to Nextflow and nf-core, please refer to [this page](https://nf-co.re/docs/usage/installation) on how to set-up Nextflow. Make sure to [test your setup](https://nf-co.re/docs/usage/introduction#how-to-run-a-pipeline) with `-profile test` before running the workflow on actual data.
 
-<!-- TODO nf-core: Describe the minimum required steps to execute the pipeline, e.g. how to prepare samplesheets.
-     Explain what rows and columns represent. For instance (please edit as appropriate):
-
 First, prepare a samplesheet with your input data that looks as follows:
 
 `samplesheet.csv`:
 
 ```csv
-sample,fastq_1,fastq_2
-CONTROL_REP1,AEG588A1_S1_L002_R1_001.fastq.gz,AEG588A1_S1_L002_R2_001.fastq.gz
+patient,sample,variantcaller,vcf,vcf_tbi,varianttype
+A,t5,strelka,https://github.com/qbic-pipelines/test-datasets/raw/refs/heads/main/variantconsensus/tumor_5_vs_normal_5.strelka.somatic_indels_VEP.ann.vcf.gz,https://github.com/qbic-pipelines/test-datasets/raw/refs/heads/main/variantconsensus/tumor_5_vs_normal_5.strelka.somatic_indels_VEP.ann.vcf.gz.tbi,indels
 ```
 
-Each row represents a fastq file (single-end) or a pair of fastq files (paired end).
-
--->
+Each row represents a VCF file and its index. The varianttype can be either snps, indels or both.
 
 Now, you can run the pipeline using:
-
-<!-- TODO nf-core: update the following command to include all required parameters for a minimal example -->
 
 ```bash
 nextflow run qbic-pipelines/variantconsensus \
