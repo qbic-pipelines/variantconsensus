@@ -39,7 +39,6 @@ A,t20,muse,tumor_20_vs_normal_20/tumor_20_vs_normal_20.muse_VEP.ann.vcf.gz,tumor
 
 Each row represents a VCF file and its index. The varianttype can be either snps, indels or both.
 
-
 Now, you can run the pipeline using:
 
 ```bash
