@@ -32,9 +32,7 @@ First, prepare a samplesheet with your input data that looks as follows:
 
 ```csv
 patient,sample,variantcaller,vcf,vcf_tbi,varianttype
-A,t20,strelka,tumor_20_vs_normal_20.strelka.somatic_indels_VEP.ann.vcf.gz,tumor_20_vs_normal_20.strelka.somatic_indels_VEP.ann.vcf.gz.tbi,indels
-A,t20,strelka,tumor_20_vs_normal_20.strelka.somatic_snvs_VEP.ann.vcf.gz,tumor_20_vs_normal_20.strelka.somatic_snvs_VEP.ann.vcf.gz.tbi,snps
-A,t20,muse,tumor_20_vs_normal_20/tumor_20_vs_normal_20.muse_VEP.ann.vcf.gz,tumor_20_vs_normal_20/tumor_20_vs_normal_20.muse_VEP.ann.vcf.gz.tbi,both
+A,t5,strelka,https://github.com/qbic-pipelines/test-datasets/raw/refs/heads/main/variantconsensus/tumor_5_vs_normal_5.strelka.somatic_indels_VEP.ann.vcf.gz,https://github.com/qbic-pipelines/test-datasets/raw/refs/heads/main/variantconsensus/tumor_5_vs_normal_5.strelka.somatic_indels_VEP.ann.vcf.gz.tbi,indels
 ```
 
 Each row represents a VCF file and its index. The varianttype can be either snps, indels or both.
