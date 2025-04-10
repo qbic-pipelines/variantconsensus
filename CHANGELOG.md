@@ -9,7 +9,7 @@ Initial release of qbic-pipelines/variantconsensus, created with the [nf-core](h
 
 ### `Added`
 
-- [#2](https://github.com/qbic-pipelines/variantconsensus/pull/2) - feat: add bcftools/view to divide between snps and indels
+- [#3](https://github.com/qbic-pipelines/variantconsensus/pull/3) - feat: add bcftools/view to divide between snps and indels
 
 ### `Fixed`
 
