@@ -6,15 +6,19 @@ This document describes the output produced by the pipeline. Most of the plots a
 
 The directories listed below will be created in the results directory after the pipeline has finished. All paths are relative to the top-level results directory.
 
-<!-- TODO nf-core: Write this documentation describing your workflow's output -->
-
 ## Pipeline overview
 
 The pipeline is built using [Nextflow](https://www.nextflow.io/) and processes data using the following steps:
 
 - [bcftools/view](#bcftools-view) - Divide VCFs into SNPs and INDELs
+- [bcftools/isec](#bcftools-isec) - Intersect SNPs keeping only variants found in at least (N-1) of the provided VCFs
+- [tabix/bgzip](#tabix-bgzip) - Bgzip and index the consensus VCF
+- [bcftools/pass](#bcftools-pass) - Filter the consensus VCF for variants marked as 'PASS,.' with `bcftools view`
 - [MultiQC](#multiqc) - Aggregate report describing results and QC from the whole pipeline
 - [Pipeline information](#pipeline-information) - Report metrics generated during the workflow execution
+
+> [!NOTE]
+> INDEL consensus is not yet implemented!
 
 ### BCFtools view
 
@@ -23,6 +27,38 @@ The pipeline is built using [Nextflow](https://www.nextflow.io/) and processes d
 
 - `bcftools/view/{caller}/*.snps.{vcf.gz,vcf.gz.tbi}`: vcf file and its index containing SNPs
 - `bcftools/view/{caller}/*.indels.{vcf.gz,vcf.gz.tbi}`: vcf file and its index containing INDELs
+
+</details>
+
+### BCFtools isec
+
+<details markdown="1">
+<summary>Output files</summary>
+
+- `bcftools/isec/{patient}_{sample}.snps/`: directory containing the results of the intersection
+  - `README.txt`: Info on the isec results decribing all contained files
+  - `000x.vcf`: VCF file with the intersected variants
+  - `sites.txt`: evaluated sites
+
+</details>
+
+### Tabix BGzip
+
+<details markdown="1">
+<summary>Output files</summary>
+
+- `bgzip/{snps,indels}/{patient}_{sample}.{snps,indels}.vcf.gz`: Bgzipped VCF file
+- `bgzip/{snps,indels}/{patient}_{sample}.{snps,indels}.vcf.gz.tbi`: Index of bgzipped VCF file
+
+</details>
+
+### BCFtools pass
+
+<details markdown="1">
+<summary>Output files</summary>
+
+- `bcftools/pass/{patient}_{sample}.{snps,indels}.consensus.pass.vcf.gz`: VCF file containing only variants marked as PASS or .
+- `bcftools/pass/{patient}_{sample}.{snps,indels}.consensus.pass.vcf.gz.tbi`: Index of filtered VCF file
 
 </details>
 

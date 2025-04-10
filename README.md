@@ -19,7 +19,13 @@ Inspired by
 > Trevarton, A. J., Chang, J. T., & Symmans, W. F. (2023). Simple combination of multiple somatic variant callers to increase accuracy. Scientific reports, 13(1), 8463.
 
 1. Split provided VCFs into SNPs and INDELS ([bcftools/view](https://samtools.github.io/bcftools/bcftools.html))
-2. Present QC for raw reads ([`MultiQC`](http://multiqc.info/))
+2. Intersect SNPs keeping only variants found in at least (N-1) of the provided VCFs ([bcftools/isec](https://samtools.github.io/bcftools/bcftools.html))
+3. Bgzip and index the consensus VCF ([tabix/bgzip](https://www.htslib.org/doc/tabix.html))
+4. Filter the consensus VCF for variants marked as 'PASS,.' ([bcftools/view](https://samtools.github.io/bcftools/bcftools.html))
+5. Present QC for raw reads ([`MultiQC`](http://multiqc.info/))
+
+> [!NOTE]
+> INDEL consensus is not yet implemented!
 
 ## Usage
 
