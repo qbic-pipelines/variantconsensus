@@ -133,16 +133,14 @@ workflow VARIANTCONSENSUS {
         [],
     )
 
-    ch_divided_indels = ch_indels.mix(
-        FILTER_INDELS.out.vcf.join(FILTER_INDELS.out.tbi)
+    ch_divided_indels = FILTER_INDELS.out.vcf.join(FILTER_INDELS.out.tbi)
             .map { meta, vcf, tbi -> [ meta.subMap(meta.keySet() - ['varianttype']) + [ 'varianttype': 'indels' ], [vcf, tbi] ] }
-        )
 
     ch_versions = ch_versions.mix(FILTER_INDELS.out.versions)
 
     // Group indels for ISEC
     ch_indels_grouped = Channel.empty()
-        .mix(ch_snps, ch_divided_indels)
+        .mix(ch_indels, ch_divided_indels)
         .map { meta, files ->
             [ [meta.id, meta.sample, meta.varianttype], meta, files[0], files[1] ]}
         .groupTuple(by: [0])
