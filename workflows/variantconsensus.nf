@@ -74,6 +74,9 @@ workflow VARIANTCONSENSUS {
 
     // ch_versions = ch_versions.mix(FILTER_INDELS.out.versions)
 
+    // Define the consensus thresholds you want to compare
+    def consensusThresholds = [1, 2, 3] // Adjust these values as needed
+
     // Group SNPs for ISEC
     ch_snps_grouped = Channel.empty()
         .mix(ch_snps, ch_divided_snps)
@@ -83,16 +86,24 @@ workflow VARIANTCONSENSUS {
         .map { _id, metas, vcfs, tbis ->
             def meta = metas[0].subMap(metas[0].keySet() - ['caller'])
             meta = meta + [ 'numFiles': vcfs.flatten().size() ]
-            meta = meta + [ 'consensusFiles': meta.numFiles - 1 ]
             [meta, vcfs.flatten(), tbis.flatten()]
         }
 
-    // BCFTOOLS ISEC for SNP consensus
-    // At the moment the implementation is
-    // bcftools view --collapse snps --nfiles +${meta.consensusFiles}
-    // --collapse snps means any SNP records are compatible
-    // --nfiles output positions present in N-1 or more of the files
-    ISEC_SNPS( ch_snps_grouped )
+    // Create multiple channels with different consensusFiles values
+    ch_consensus_channels = consensusThresholds.collect { threshold ->
+        ch_snps_grouped.map { meta, vcfs, tbis ->
+            def newMeta = meta + [ 'consensusFiles': meta.numFiles - threshold ]
+            [newMeta, vcfs, tbis]
+        }
+    }
+
+    // Combine all channels into a single channel
+    ch_all_consensus = Channel.empty()
+    ch_consensus_channels.each { channel ->
+        ch_all_consensus = ch_all_consensus.mix(channel)
+    }
+
+    ISEC_SNPS( ch_all_consensus )
 
     ISEC_SNPS.out.results
         .map { meta, dir ->
