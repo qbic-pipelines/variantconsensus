@@ -89,18 +89,21 @@ workflow VARIANTCONSENSUS {
             [meta, vcfs.flatten(), tbis.flatten()]
         }
 
-
-    // Create a value channel with multiple consensus thresholds
-    ch_all_consensus = ch_snps_grouped.combine(Channel.from(consensusThresholds))
-        .map { meta, vcfs, tbis, threshold ->
+    // Create multiple channels with different consensusFiles values
+    ch_consensus_channels = consensusThresholds.collect { threshold ->
+        ch_snps_grouped.map { meta, vcfs, tbis ->
             def newMeta = meta + [ 'consensusFiles': meta.numFiles - threshold ]
             [newMeta, vcfs, tbis]
         }
-        .toList()
-        .map { it -> Channel.value(it) }
+    }
 
-    // BCFTOOLS ISEC for SNP consensus
-    ISEC_SNPS(ch_all_consensus.flatten())
+    // Combine all channels into a single channel
+    ch_all_consensus = Channel.empty()
+    ch_consensus_channels.each { channel ->
+        ch_all_consensus = ch_all_consensus.mix(channel)
+    }
+
+    ISEC_SNPS( ch_all_consensus )
 
     ISEC_SNPS.out.results
         .map { meta, dir ->
