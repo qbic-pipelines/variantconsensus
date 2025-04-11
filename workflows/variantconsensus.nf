@@ -149,7 +149,7 @@ workflow VARIANTCONSENSUS {
         .map { _id, metas, vcfs, tbis ->
             def meta = metas[0].subMap(metas[0].keySet() - ['caller'])
             meta = meta + [ 'numFiles': vcfs.flatten().size() ]
-            meta = meta + [ 'consensusFiles': 2 ] // TODO: find out what number makes the most sense here
+            // meta = meta + [ 'consensusFiles': 2 ] // TODO: is hard corded to 2 in the conf
             [meta, vcfs.flatten(), tbis.flatten()]
         }
 
