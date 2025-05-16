@@ -7,7 +7,6 @@
 include { BCFTOOLS_VIEW as FILTER_SNPS   } from '../modules/nf-core/bcftools/view/main'
 include { BCFTOOLS_VIEW as FILTER_INDELS } from '../modules/nf-core/bcftools/view/main'
 include { BCFTOOLS_ISEC as ISEC_SNPS     } from '../modules/nf-core/bcftools/isec/main'
-include { TABIX_BGZIPTABIX as TABIX_SNPS } from '../modules/nf-core/tabix/bgziptabix/main'
 include { BCFTOOLS_VIEW as PASS_SNPS     } from '../modules/nf-core/bcftools/view/main'
 
 // Template Modules
@@ -96,25 +95,29 @@ workflow VARIANTCONSENSUS {
 
     ISEC_SNPS.out.results
         .map { meta, dir ->
-            def new_filename = "${meta.patient}.${meta.id}.${meta.varianttype}.consensus.vcf"
+            def new_filename = "${meta.patient}.${meta.id}.${meta.varianttype}.consensus.vcf.gz"
             def copied_file = file("${dir}/${new_filename}")
+            def copied_index = file("${dir}/${new_filename}.tbi")
 
             if (workflow.stubRun) {
                 // For stub runs, just create an empty file
-                copied_file.text = ''
+                copied_index.text = ''
             } else {
                 // For actual runs, perform the copy operation
                 def files = dir.listFiles()
-                def original_file = files.find { it.name == '0000.vcf' }
+                def original_file = files.find { it.name == '0000.vcf.gz' }
+                def original_index = files.find { it.name == '0000.vcf.gz.tbi' }
                 if (original_file) {
                     original_file.copyTo(copied_file)
+                    original_index.copyTo(copied_index)
                 } else {
-                    log.warn "File '0000.vcf' not found in directory ${dir}. Creating an empty file."
+                    log.warn "File '0000.vcf.gz' not found in directory ${dir}. Creating an empty file."
                     copied_file.text = ''
+                    copied_index.text = ''
                 }
             }
 
-            return [meta, copied_file]
+            return [meta, copied_file, copied_index]
         }
         .set { ch_intersect_all_snps }
 
@@ -123,15 +126,8 @@ workflow VARIANTCONSENSUS {
     // TODO: BCFTOOLS ISEC for INDEL consensus
 
 
-    // Zip and index the SNP consensus VCFs
-    TABIX_SNPS( ch_intersect_all_snps )
-
-    ch_versions = ch_versions.mix(TABIX_SNPS.out.versions)
-
-    // TODO: TABIX for INDEL consensus
-
     // Filter the SNPs for PASS variants
-    PASS_SNPS( TABIX_SNPS.out.gz_tbi, [], [], [] )
+    PASS_SNPS( ch_intersect_all_snps, [], [], [] )
 
     ch_versions = ch_versions.mix(PASS_SNPS.out.versions)
 
