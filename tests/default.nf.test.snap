@@ -1,7 +1,7 @@
 {
     "Params: default - stub": {
         "content": [
-            4,
+            7,
             {
                 "FILTER_INDELS": {
                     "bcftools": 1.21
@@ -30,7 +30,7 @@
                 "bcftools/isec/A_t5.indels/0000.vcf.gz.tbi",
                 "bcftools/isec/A_t5.indels/0001.vcf.gz",
                 "bcftools/isec/A_t5.indels/0001.vcf.gz.tbi",
-                "bcftools/isec/A_t5.indels/A.A_t5.indels.consensus.vcf",
+                "bcftools/isec/A_t5.indels/A.A_t5.indels.consensus.vcf.gz.tbi",
                 "bcftools/isec/A_t5.indels/README.txt",
                 "bcftools/isec/A_t5.indels/sites.txt",
                 "bcftools/isec/A_t5.snps",
@@ -60,10 +60,17 @@
                 "multiqc/multiqc_plots",
                 "multiqc/multiqc_report.html",
                 "pipeline_info",
-                "pipeline_info/params_2025-04-11_14-57-46.json",
+                "pipeline_info/params_2025-05-16_13-46-42.json",
                 "pipeline_info/variantconsensus_software_mqc_versions.yml"
             ],
             [
+                "0000.vcf.gz:md5,68b329da9893e34099c7d8ad5cb9c940",
+                "0000.vcf.gz.tbi:md5,d41d8cd98f00b204e9800998ecf8427e",
+                "0001.vcf.gz:md5,68b329da9893e34099c7d8ad5cb9c940",
+                "0001.vcf.gz.tbi:md5,d41d8cd98f00b204e9800998ecf8427e",
+                "A.A_t5.indels.consensus.vcf.gz.tbi:md5,d41d8cd98f00b204e9800998ecf8427e",
+                "README.txt:md5,d41d8cd98f00b204e9800998ecf8427e",
+                "sites.txt:md5,d41d8cd98f00b204e9800998ecf8427e",
                 "0000.vcf.gz:md5,68b329da9893e34099c7d8ad5cb9c940",
                 "0000.vcf.gz.tbi:md5,d41d8cd98f00b204e9800998ecf8427e",
                 "0001.vcf.gz:md5,68b329da9893e34099c7d8ad5cb9c940",
@@ -81,21 +88,21 @@
                 "A_t5.muse.indels.vcf.gz.tbi:md5,d41d8cd98f00b204e9800998ecf8427e",
                 "A_t5.muse.snps.vcf.gz:md5,68b329da9893e34099c7d8ad5cb9c940",
                 "A_t5.muse.snps.vcf.gz.tbi:md5,d41d8cd98f00b204e9800998ecf8427e",
-                "versions.yml:md5,c795ab4eb72e3615f3a73112ee4c38fb",
+                "versions.yml:md5,3ad9c2a4cc23efb3315075e1b3a8212d",
                 "multiqc_report.html:md5,d41d8cd98f00b204e9800998ecf8427e",
-                "params_2025-05-16_10-53-25.json:md5,243a46798bed497b2713c88232062c10",
-                "variantconsensus_software_mqc_versions.yml:md5,c179efafa1559921380fb40b8ee58a8c"
+                "params_2025-05-16_13-46-42.json:md5,5625d7223c7fbd1fc3a6888bffd6a64a",
+                "variantconsensus_software_mqc_versions.yml:md5,e7aa5f9f10cc12c2f34701653d624bbb"
             ]
         ],
         "meta": {
             "nf-test": "0.9.2",
             "nextflow": "24.10.4"
         },
-        "timestamp": "2025-05-16T10:53:36.821773"
+        "timestamp": "2025-05-16T13:46:54.786735"
     },
     "Params: default": {
         "content": [
-            4,
+            7,
             {
                 "FILTER_INDELS": {
                     "bcftools": 1.21
@@ -120,8 +127,10 @@
                 "bcftools",
                 "bcftools/isec",
                 "bcftools/isec/A_t5.indels",
-                "bcftools/isec/A_t5.indels/0000.vcf",
-                "bcftools/isec/A_t5.indels/0001.vcf",
+                "bcftools/isec/A_t5.indels/0000.vcf.gz",
+                "bcftools/isec/A_t5.indels/0000.vcf.gz.tbi",
+                "bcftools/isec/A_t5.indels/0001.vcf.gz",
+                "bcftools/isec/A_t5.indels/0001.vcf.gz.tbi",
                 "bcftools/isec/A_t5.indels/README.txt",
                 "bcftools/isec/A_t5.indels/sites.txt",
                 "bcftools/isec/A_t5.snps",
@@ -157,17 +166,23 @@
                 "pipeline_info/variantconsensus_software_mqc_versions.yml"
             ],
             [
+                "README.txt:md5,32ca8503e36819a3320d103c6cb71390",
+                "sites.txt:md5,d41d8cd98f00b204e9800998ecf8427e",
                 "README.txt:md5,81304b7216f9dcb747f03ea56eabbe19",
                 "sites.txt:md5,ec44fcb80ac7ef7b5543176f359d25fa",
                 "versions.yml:md5,6fb97ad6be18874723709ce6b1b4bdd2",
                 "versions.yml:md5,1a00c1e02803ea5a955dacf1fed8c45f",
-                "versions.yml:md5,c795ab4eb72e3615f3a73112ee4c38fb",
+                "versions.yml:md5,3ad9c2a4cc23efb3315075e1b3a8212d",
                 "multiqc_citations.txt:md5,4c806e63a283ec1b7e78cdae3a923d4f"
             ],
             [
+                "0000.vcf.gz:md5,d41d8cd98f00b204e9800998ecf8427e",
+                "0001.vcf.gz:md5,d41d8cd98f00b204e9800998ecf8427e",
                 "0000.vcf.gz:md5,a9d0016bdee16f18dd1f83a5a052358f",
                 "0001.vcf.gz:md5,66e58a9846ab6aa0a9f256f108337f9c",
+                "A_t5.indels.consensus.pass.vcf.gz:md5,d41d8cd98f00b204e9800998ecf8427e",
                 "A_t5.snps.consensus.pass.vcf.gz:md5,271c535cee4a7cb3bfb1be5fbaace233",
+                "A_t5.muse.indels.vcf.gz:md5,d41d8cd98f00b204e9800998ecf8427e",
                 "A_t5.muse.snps.vcf.gz:md5,66e58a9846ab6aa0a9f256f108337f9c"
             ]
         ],
@@ -175,6 +190,6 @@
             "nf-test": "0.9.2",
             "nextflow": "24.10.4"
         },
-        "timestamp": "2025-04-11T14:57:39.810628978"
+        "timestamp": "2025-05-16T13:46:38.525603"
     }
 }
