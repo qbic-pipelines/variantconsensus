@@ -7,7 +7,6 @@
 include { BCFTOOLS_VIEW as FILTER_SNPS   } from '../modules/nf-core/bcftools/view/main'
 include { BCFTOOLS_VIEW as FILTER_INDELS } from '../modules/nf-core/bcftools/view/main'
 include { BCFTOOLS_ISEC as ISEC_SNPS     } from '../modules/nf-core/bcftools/isec/main'
-include { TABIX_BGZIPTABIX as TABIX_SNPS } from '../modules/nf-core/tabix/bgziptabix/main'
 include { BCFTOOLS_VIEW as PASS_SNPS     } from '../modules/nf-core/bcftools/view/main'
 
 // Template Modules
