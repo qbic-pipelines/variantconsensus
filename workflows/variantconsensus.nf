@@ -8,6 +8,7 @@ include { BCFTOOLS_VIEW as FILTER_SNPS   } from '../modules/nf-core/bcftools/vie
 include { BCFTOOLS_VIEW as FILTER_INDELS } from '../modules/nf-core/bcftools/view/main'
 include { BCFTOOLS_ISEC as ISEC_SNPS     } from '../modules/nf-core/bcftools/isec/main'
 include { BCFTOOLS_VIEW as PASS_SNPS     } from '../modules/nf-core/bcftools/view/main'
+include { BCFTOOLS_STATS as STATS_SNPS   } from '../modules/nf-core/bcftools/stats/main'
 
 // Template Modules
 include { MULTIQC                        } from '../modules/nf-core/multiqc/main'
@@ -29,6 +30,7 @@ workflow VARIANTCONSENSUS {
     main:
 
     ch_versions = Channel.empty()
+    ch_reports = Channel.empty()
     ch_multiqc_files = Channel.empty()
 
     ch_both = ch_samplesheet.filter { meta, _files ->
@@ -131,6 +133,13 @@ workflow VARIANTCONSENSUS {
 
     ch_versions = ch_versions.mix(PASS_SNPS.out.versions)
 
+    STATS_SNPS( PASS_SNPS.out.vcf.join(PASS_SNPS.out.tbi), [[],[]], [[],[]], [[],[]], [[],[]], [[],[]] )
+
+    ch_versions = ch_versions.mix(STATS_SNPS.out.versions)
+    ch_reports = ch_reports.mix(STATS_SNPS.out.stats.collect{it[1]})
+
+    ch_reports.dump(tag: "report")
+
     // TODO: PASS for INDEL consensus
 
 
@@ -183,6 +192,7 @@ workflow VARIANTCONSENSUS {
             sort: true,
         )
     )
+    ch_multiqc_files = ch_multiqc_files.mix(ch_reports)
 
     MULTIQC(
         ch_multiqc_files.collect(),
