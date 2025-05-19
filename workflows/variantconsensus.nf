@@ -138,8 +138,6 @@ workflow VARIANTCONSENSUS {
     ch_versions = ch_versions.mix(STATS_SNPS.out.versions)
     ch_reports = ch_reports.mix(STATS_SNPS.out.stats.collect{it[1]})
 
-    ch_reports.dump(tag: "report")
-
     // TODO: PASS for INDEL consensus
 
 
