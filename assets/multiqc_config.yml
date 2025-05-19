@@ -9,6 +9,18 @@ report_section_order:
   "qbic-pipelines-variantconsensus-summary":
     order: -1002
 
-export_plots: true
+export_plots: false
 
-disable_version_detection: true
+run_modules:
+  - bcftools
+
+module_order:
+  - bcftools
+
+bcftools:
+  fn: "*bcftools_stats.txt"
+  general_stats_table: false
+
+fn_clean_exts:
+  - ".bcftools_stats"
+  - ".txt"
