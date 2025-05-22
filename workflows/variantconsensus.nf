@@ -107,7 +107,7 @@ workflow VARIANTCONSENSUS {
 
     ISEC_SNPS.out.results
         .map { meta, dir ->
-            def new_filename = "${meta.patient}.${meta.id}.${meta.varianttype}.consensus.vcf"
+            def new_filename = "${meta.patient}.${meta.id}.${meta.varianttype}.N-${meta.consensusFiles}.consensus.vcf"
             def copied_file = file("${dir}/${new_filename}")
 
             if (workflow.stubRun) {
