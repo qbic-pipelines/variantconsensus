@@ -5,7 +5,7 @@ nextflow_pipeline {
 
     test("Params: default") {
 
-        config 'conf/test.config'
+        config 'conf/test.config' THISISATEST FOR MERGE CONFLICT
 
         when {
             params {
