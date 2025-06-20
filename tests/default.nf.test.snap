@@ -42,34 +42,21 @@
                 "multiqc/multiqc_plots",
                 "multiqc/multiqc_report.html",
                 "pipeline_info",
-                "pipeline_info/params_2025-06-20_12-13-04.json",
                 "pipeline_info/variantconsensus_software_mqc_versions.yml"
             ],
             [
-                "0000.vcf.gz:md5,68b329da9893e34099c7d8ad5cb9c940",
-                "0000.vcf.gz.tbi:md5,d41d8cd98f00b204e9800998ecf8427e",
-                "0001.vcf.gz:md5,68b329da9893e34099c7d8ad5cb9c940",
-                "0001.vcf.gz.tbi:md5,d41d8cd98f00b204e9800998ecf8427e",
-                "A.A_t5.snps.consensus.vcf.gz.tbi:md5,d41d8cd98f00b204e9800998ecf8427e",
                 "README.txt:md5,d41d8cd98f00b204e9800998ecf8427e",
                 "sites.txt:md5,d41d8cd98f00b204e9800998ecf8427e",
                 "versions.yml:md5,6fb97ad6be18874723709ce6b1b4bdd2",
-                "A_t5.snps.consensus.pass.vcf.gz:md5,68b329da9893e34099c7d8ad5cb9c940",
-                "A_t5.snps.consensus.pass.vcf.gz.tbi:md5,d41d8cd98f00b204e9800998ecf8427e",
                 "versions.yml:md5,1a00c1e02803ea5a955dacf1fed8c45f",
-                "A_t5.muse.snps.vcf.gz:md5,68b329da9893e34099c7d8ad5cb9c940",
-                "A_t5.muse.snps.vcf.gz.tbi:md5,d41d8cd98f00b204e9800998ecf8427e",
-                "versions.yml:md5,c795ab4eb72e3615f3a73112ee4c38fb",
-                "multiqc_report.html:md5,d41d8cd98f00b204e9800998ecf8427e",
-                "params_2025-06-20_12-13-04.json:md5,66e84dd3dd6d204b8b3cea1eb5a39839",
-                "variantconsensus_software_mqc_versions.yml:md5,a00a7585aac4ece6dd2a4ad4cb70c200"
+                "versions.yml:md5,c795ab4eb72e3615f3a73112ee4c38fb"
             ]
         ],
         "meta": {
             "nf-test": "0.9.2",
             "nextflow": "25.04.3"
         },
-        "timestamp": "2025-06-20T12:13:18.10736"
+        "timestamp": "2025-06-20T12:29:07.454947"
     },
     "Params: default": {
         "content": [
