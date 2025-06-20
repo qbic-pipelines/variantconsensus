@@ -9,12 +9,7 @@ Initial release of qbic-pipelines/variantconsensus, created with the [nf-core](h
 
 ### `Added`
 
-- [#3](https://github.com/qbic-pipelines/variantconsensus/pull/3) - feat: add bcftools/view to divide between snps and indels
-- [#4](https://github.com/qbic-pipelines/variantconsensus/pull/4) - feat: add intersection of snp vcfs
-
 ### `Fixed`
-
-- [#8](https://github.com/qbic-pipelines/variantconsensus/pull/8) - Make bcftools/isec gzip and tabix the consensus
 
 ### `Dependencies`
 
