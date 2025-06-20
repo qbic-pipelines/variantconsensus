@@ -42,7 +42,7 @@
                 "multiqc/multiqc_plots",
                 "multiqc/multiqc_report.html",
                 "pipeline_info",
-                "pipeline_info/params_2025-05-16_10-53-25.json",
+                "pipeline_info/params_2025-06-20_12-13-04.json",
                 "pipeline_info/variantconsensus_software_mqc_versions.yml"
             ],
             [
@@ -61,15 +61,15 @@
                 "A_t5.muse.snps.vcf.gz.tbi:md5,d41d8cd98f00b204e9800998ecf8427e",
                 "versions.yml:md5,c795ab4eb72e3615f3a73112ee4c38fb",
                 "multiqc_report.html:md5,d41d8cd98f00b204e9800998ecf8427e",
-                "params_2025-05-16_10-53-25.json:md5,243a46798bed497b2713c88232062c10",
-                "variantconsensus_software_mqc_versions.yml:md5,c179efafa1559921380fb40b8ee58a8c"
+                "params_2025-06-20_12-13-04.json:md5,66e84dd3dd6d204b8b3cea1eb5a39839",
+                "variantconsensus_software_mqc_versions.yml:md5,a00a7585aac4ece6dd2a4ad4cb70c200"
             ]
         ],
         "meta": {
             "nf-test": "0.9.2",
-            "nextflow": "24.10.4"
+            "nextflow": "25.04.3"
         },
-        "timestamp": "2025-05-16T10:53:36.821773"
+        "timestamp": "2025-06-20T12:13:18.10736"
     },
     "Params: default": {
         "content": [
