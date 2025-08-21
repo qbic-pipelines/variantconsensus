@@ -4,17 +4,19 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
 // Used Modules
-include { BCFTOOLS_VIEW as FILTER_SNPS   } from '../modules/nf-core/bcftools/view/main'
-include { BCFTOOLS_VIEW as FILTER_INDELS } from '../modules/nf-core/bcftools/view/main'
-include { BCFTOOLS_ISEC as ISEC_SNPS     } from '../modules/nf-core/bcftools/isec/main'
-include { BCFTOOLS_VIEW as PASS_SNPS     } from '../modules/nf-core/bcftools/view/main'
+include { BCFTOOLS_VIEW as FILTER_SNPS     } from '../modules/nf-core/bcftools/view/main'
+include { BCFTOOLS_VIEW as FILTER_INDELS   } from '../modules/nf-core/bcftools/view/main'
+include { BCFTOOLS_ISEC as ISEC_SNPS       } from '../modules/nf-core/bcftools/isec/main'
+include { BCFTOOLS_VIEW as PASS_SNPS       } from '../modules/nf-core/bcftools/view/main'
+include { BCFTOOLS_ISEC as ISEC_INDELS     } from '../modules/nf-core/bcftools/isec/main'
+include { BCFTOOLS_VIEW as PASS_INDELS     } from '../modules/nf-core/bcftools/view/main'
 
 // Template Modules
-include { MULTIQC                        } from '../modules/nf-core/multiqc/main'
-include { paramsSummaryMap               } from 'plugin/nf-schema'
-include { paramsSummaryMultiqc           } from '../subworkflows/nf-core/utils_nfcore_pipeline'
-include { softwareVersionsToYAML         } from '../subworkflows/nf-core/utils_nfcore_pipeline'
-include { methodsDescriptionText         } from '../subworkflows/local/utils_nfcore_variantconsensus_pipeline'
+include { MULTIQC                          } from '../modules/nf-core/multiqc/main'
+include { paramsSummaryMap                 } from 'plugin/nf-schema'
+include { paramsSummaryMultiqc             } from '../subworkflows/nf-core/utils_nfcore_pipeline'
+include { softwareVersionsToYAML           } from '../subworkflows/nf-core/utils_nfcore_pipeline'
+include { methodsDescriptionText           } from '../subworkflows/local/utils_nfcore_variantconsensus_pipeline'
 
 /*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -35,14 +37,13 @@ workflow VARIANTCONSENSUS {
             meta.varianttype != 'snps' && meta.varianttype != 'indels'
         }
 
+    //
+    // SNP WORKFLOW
+    //
+
     ch_snps = ch_samplesheet.filter { meta, _files ->
             meta.varianttype == 'snps'
         }
-
-    // TODO: Uncomment indel
-    // ch_indels = ch_samplesheet.filter { meta, _files ->
-    //         meta.varianttype == 'indels'
-    //     }
 
     // FILTER_SNPS to divide into SNPs and INDELs
     FILTER_SNPS(
@@ -56,22 +57,6 @@ workflow VARIANTCONSENSUS {
             .map { meta, vcf, tbi -> [ meta.subMap(meta.keySet() - ['varianttype']) + [ 'varianttype': 'snps' ], [vcf, tbi] ] }
 
     ch_versions = ch_versions.mix(FILTER_SNPS.out.versions)
-
-    // TODO: uncomment INDEL filter
-    // // FILTER_INDELS to divide into SNPs and INDELs
-    // FILTER_INDELS(
-    //     ch_both.map { meta, vcfs -> [meta, vcfs[0], vcfs[1]] },
-    //     [],
-    //     [],
-    //     [],
-    // )
-
-    // ch_all_indels = ch_indels.mix(
-    //     FILTER_INDELS.out.vcf.join(FILTER_INDELS.out.tbi)
-    //         .map { meta, vcf, tbi -> [ meta.subMap(meta.keySet() - ['varianttype']) + [ 'varianttype': 'indels' ], [vcf, tbi] ] }
-    //     )
-
-    // ch_versions = ch_versions.mix(FILTER_INDELS.out.versions)
 
     // Group SNPs for ISEC
     ch_snps_grouped = Channel.empty()
@@ -123,16 +108,81 @@ workflow VARIANTCONSENSUS {
 
     ch_versions = ch_versions.mix(ISEC_SNPS.out.versions)
 
-    // TODO: BCFTOOLS ISEC for INDEL consensus
-
-
     // Filter the SNPs for PASS variants
     PASS_SNPS( ch_intersect_all_snps, [], [], [] )
 
     ch_versions = ch_versions.mix(PASS_SNPS.out.versions)
 
-    // TODO: PASS for INDEL consensus
 
+    //
+    // INDEL WORKFLOW
+    //
+
+    ch_indels = ch_samplesheet.filter { meta, _files ->
+        meta.varianttype == 'indels'
+    }
+
+    // FILTER_INDELS to divide into SNPs and INDELs
+    FILTER_INDELS(
+        ch_both.map { meta, vcfs -> [meta, vcfs[0], vcfs[1]] },
+        [],
+        [],
+        [],
+    )
+
+    ch_divided_indels = FILTER_INDELS.out.vcf.join(FILTER_INDELS.out.tbi)
+            .map { meta, vcf, tbi -> [ meta.subMap(meta.keySet() - ['varianttype']) + [ 'varianttype': 'indels' ], [vcf, tbi] ] }
+
+    ch_versions = ch_versions.mix(FILTER_INDELS.out.versions)
+
+    // Group indels for ISEC
+    ch_indels_grouped = Channel.empty()
+        .mix(ch_indels, ch_divided_indels)
+        .map { meta, files ->
+            [ [meta.id, meta.sample, meta.varianttype], meta, files[0], files[1] ]}
+        .groupTuple(by: [0])
+        .map { _id, metas, vcfs, tbis ->
+            def meta = metas[0].subMap(metas[0].keySet() - ['caller'])
+            meta = meta + [ 'numFiles': vcfs.flatten().size() ]
+            // meta = meta + [ 'consensusFiles': 2 ] // TODO: is hard corded to 2 in the conf
+            [meta, vcfs.flatten(), tbis.flatten()]
+        }
+
+    // BCFTOOLS ISEC for INDEL consensus
+    ISEC_INDELS( ch_indels_grouped )
+
+    ISEC_INDELS.out.results
+        .map { meta, dir ->
+            def new_filename = "${meta.patient}.${meta.id}.${meta.varianttype}.consensus.vcf.gz"
+            def copied_file = file("${dir}/${new_filename}")
+            def copied_index = file("${dir}/${new_filename}.tbi")
+
+            if (workflow.stubRun) {
+                // For stub runs, just create an empty file
+                copied_index.text = ''
+            } else {
+                // For actual runs, perform the copy operation
+                def files = dir.listFiles()
+                def original_file = files.find { it.name == '0000.vcf.gz' }
+                def original_index = files.find { it.name == '0000.vcf.gz.tbi' }
+                if (original_file) {
+                    original_file.copyTo(copied_file)
+                    original_index.copyTo(copied_index)
+                } else {
+                    log.warn "File '0000.vcf.gz' not found in directory ${dir}. Creating an empty file."
+                    copied_file.text = ''
+                    copied_index.text = ''
+                }
+            }
+
+            return [meta, copied_file, copied_index]
+        }
+        .set { ch_intersect_all_indels }
+
+    // Filter the INDELs for PASS variants
+    PASS_INDELS( ch_intersect_all_indels, [], [], [] )
+
+    ch_versions = ch_versions.mix(PASS_INDELS.out.versions)
 
     //
     // Collate and save software versions

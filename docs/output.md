@@ -11,14 +11,11 @@ The directories listed below will be created in the results directory after the 
 The pipeline is built using [Nextflow](https://www.nextflow.io/) and processes data using the following steps:
 
 - [bcftools/view](#bcftools-view) - Divide VCFs into SNPs and INDELs
-- [bcftools/isec](#bcftools-isec) - Intersect SNPs keeping only variants found in at least (N-1) of the provided VCFs
+- [bcftools/isec](#bcftools-isec) - Intersect SNPs / INDELs keeping only variants found in at least (N-1) / 2 of the provided VCFs
 - [tabix/bgzip](#tabix-bgzip) - Bgzip and index the consensus VCF
 - [bcftools/pass](#bcftools-pass) - Filter the consensus VCF for variants marked as 'PASS,.' with `bcftools view`
 - [MultiQC](#multiqc) - Aggregate report describing results and QC from the whole pipeline
 - [Pipeline information](#pipeline-information) - Report metrics generated during the workflow execution
-
-> [!NOTE]
-> INDEL consensus is not yet implemented!
 
 ### BCFtools view
 
@@ -35,7 +32,7 @@ The pipeline is built using [Nextflow](https://www.nextflow.io/) and processes d
 <details markdown="1">
 <summary>Output files</summary>
 
-- `bcftools/isec/{patient}_{sample}.snps/`: directory containing the results of the intersection
+- `bcftools/isec/{patient}_{sample}.{snps,indels}/`: directory containing the results of the intersection
   - `README.txt`: Info on the isec results decribing all contained files
   - `000x.vcf`: VCF file with the intersected variants
   - `sites.txt`: evaluated sites
