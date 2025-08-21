@@ -60,45 +60,23 @@
                 "multiqc/multiqc_plots",
                 "multiqc/multiqc_report.html",
                 "pipeline_info",
-                "pipeline_info/params_2025-05-16_13-46-42.json",
                 "pipeline_info/variantconsensus_software_mqc_versions.yml"
             ],
             [
-                "0000.vcf.gz:md5,68b329da9893e34099c7d8ad5cb9c940",
-                "0000.vcf.gz.tbi:md5,d41d8cd98f00b204e9800998ecf8427e",
-                "0001.vcf.gz:md5,68b329da9893e34099c7d8ad5cb9c940",
-                "0001.vcf.gz.tbi:md5,d41d8cd98f00b204e9800998ecf8427e",
-                "A.A_t5.indels.consensus.vcf.gz.tbi:md5,d41d8cd98f00b204e9800998ecf8427e",
                 "README.txt:md5,d41d8cd98f00b204e9800998ecf8427e",
                 "sites.txt:md5,d41d8cd98f00b204e9800998ecf8427e",
-                "0000.vcf.gz:md5,68b329da9893e34099c7d8ad5cb9c940",
-                "0000.vcf.gz.tbi:md5,d41d8cd98f00b204e9800998ecf8427e",
-                "0001.vcf.gz:md5,68b329da9893e34099c7d8ad5cb9c940",
-                "0001.vcf.gz.tbi:md5,d41d8cd98f00b204e9800998ecf8427e",
-                "A.A_t5.snps.consensus.vcf.gz.tbi:md5,d41d8cd98f00b204e9800998ecf8427e",
                 "README.txt:md5,d41d8cd98f00b204e9800998ecf8427e",
                 "sites.txt:md5,d41d8cd98f00b204e9800998ecf8427e",
                 "versions.yml:md5,6fb97ad6be18874723709ce6b1b4bdd2",
-                "A_t5.indels.consensus.pass.vcf.gz:md5,68b329da9893e34099c7d8ad5cb9c940",
-                "A_t5.indels.consensus.pass.vcf.gz.tbi:md5,d41d8cd98f00b204e9800998ecf8427e",
-                "A_t5.snps.consensus.pass.vcf.gz:md5,68b329da9893e34099c7d8ad5cb9c940",
-                "A_t5.snps.consensus.pass.vcf.gz.tbi:md5,d41d8cd98f00b204e9800998ecf8427e",
                 "versions.yml:md5,1a00c1e02803ea5a955dacf1fed8c45f",
-                "A_t5.muse.indels.vcf.gz:md5,68b329da9893e34099c7d8ad5cb9c940",
-                "A_t5.muse.indels.vcf.gz.tbi:md5,d41d8cd98f00b204e9800998ecf8427e",
-                "A_t5.muse.snps.vcf.gz:md5,68b329da9893e34099c7d8ad5cb9c940",
-                "A_t5.muse.snps.vcf.gz.tbi:md5,d41d8cd98f00b204e9800998ecf8427e",
-                "versions.yml:md5,3ad9c2a4cc23efb3315075e1b3a8212d",
-                "multiqc_report.html:md5,d41d8cd98f00b204e9800998ecf8427e",
-                "params_2025-05-16_13-46-42.json:md5,5625d7223c7fbd1fc3a6888bffd6a64a",
-                "variantconsensus_software_mqc_versions.yml:md5,e7aa5f9f10cc12c2f34701653d624bbb"
+                "versions.yml:md5,3ad9c2a4cc23efb3315075e1b3a8212d"
             ]
         ],
         "meta": {
             "nf-test": "0.9.2",
             "nextflow": "25.04.3"
         },
-        "timestamp": "2025-05-16T13:46:54.786735"
+        "timestamp": "2025-08-21T15:09:19.654617"
     },
     "Params: default": {
         "content": [
@@ -188,8 +166,8 @@
         ],
         "meta": {
             "nf-test": "0.9.2",
-            "nextflow": "24.10.4"
+            "nextflow": "25.04.3"
         },
-        "timestamp": "2025-05-16T13:46:38.525603"
+        "timestamp": "2025-08-21T15:09:04.05542"
     }
 }
