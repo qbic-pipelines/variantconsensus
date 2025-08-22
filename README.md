@@ -23,7 +23,8 @@ Inspired by
 2. Intersect SNPs / INDELs keeping only variants found in at least (N-1) / 2 of the provided VCFs ([bcftools/isec](https://samtools.github.io/bcftools/bcftools.html))
 3. Bgzip and index the consensus VCF ([tabix/bgzip](https://www.htslib.org/doc/tabix.html))
 4. Filter the consensus VCF for variants marked as 'PASS,.' ([bcftools/view](https://samtools.github.io/bcftools/bcftools.html))
-5. Present QC for raw reads ([`MultiQC`](http://multiqc.info/))
+5. Report statistics for the filtered consensus VCFs ([bcftools/stats](https://samtools.github.io/bcftools/bcftools.html))
+6. Present statistics for variants ([`MultiQC`](http://multiqc.info/))
 
 ## Usage
 
