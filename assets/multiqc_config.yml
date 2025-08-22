@@ -9,7 +9,7 @@ report_section_order:
   "qbic-pipelines-variantconsensus-summary":
     order: -1002
 
-export_plots: false
+export_plots: true
 
 run_modules:
   - bcftools
