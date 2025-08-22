@@ -55,8 +55,8 @@ The pipeline is built using [Nextflow](https://www.nextflow.io/) and processes d
 <details markdown="1">
 <summary>Output files</summary>
 
-- `bcftools/pass/{patient}_{sample}.{snps,indels}.consensus.pass.vcf.gz`: VCF file containing only variants marked as PASS or .
-- `bcftools/pass/{patient}_{sample}.{snps,indels}.consensus.pass.vcf.gz.tbi`: Index of filtered VCF file
+- `bcftools/pass/{snps,indels}/{patient}_{sample}.{snps,indels}.consensus.pass.vcf.gz`: VCF file containing only variants marked as PASS or .
+- `bcftools/pass/{snps,indels}/{patient}_{sample}.{snps,indels}.consensus.pass.vcf.gz.tbi`: Index of filtered VCF file
 
 </details>
 
@@ -65,7 +65,7 @@ The pipeline is built using [Nextflow](https://www.nextflow.io/) and processes d
 <details markdown="1">
 <summary>Output files</summary>
 
-- `bcftools/stats/{patient}_{sample}.{snps,indels}.bcftools_stats.txt`: TXT file containing stats output
+- `bcftools/stats/{snps,indels}/{patient}_{sample}.{snps,indels}.bcftools_stats.txt`: TXT file containing stats output
 
 </details>
 
