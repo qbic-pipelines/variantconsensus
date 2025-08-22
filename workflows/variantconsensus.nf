@@ -7,10 +7,12 @@
 include { BCFTOOLS_VIEW as FILTER_SNPS     } from '../modules/nf-core/bcftools/view'
 include { BCFTOOLS_ISEC as ISEC_SNPS       } from '../modules/nf-core/bcftools/isec'
 include { BCFTOOLS_VIEW as PASS_SNPS       } from '../modules/nf-core/bcftools/view'
+include { BCFTOOLS_STATS as STATS_SNPS     } from '../modules/nf-core/bcftools/stats'
 // INDELs
 include { BCFTOOLS_VIEW as FILTER_INDELS   } from '../modules/nf-core/bcftools/view'
 include { BCFTOOLS_ISEC as ISEC_INDELS     } from '../modules/nf-core/bcftools/isec'
 include { BCFTOOLS_VIEW as PASS_INDELS     } from '../modules/nf-core/bcftools/view'
+include { BCFTOOLS_STATS as STATS_INDELS   } from '../modules/nf-core/bcftools/stats'
 
 // Template Modules
 include { MULTIQC                          } from '../modules/nf-core/multiqc'
@@ -32,6 +34,7 @@ workflow VARIANTCONSENSUS {
     main:
 
     ch_versions = Channel.empty()
+    ch_reports = Channel.empty()
     ch_multiqc_files = Channel.empty()
 
     ch_both = ch_samplesheet.filter { meta, _files ->
@@ -114,6 +117,11 @@ workflow VARIANTCONSENSUS {
 
     ch_versions = ch_versions.mix(PASS_SNPS.out.versions)
 
+    STATS_SNPS( PASS_SNPS.out.vcf.join(PASS_SNPS.out.tbi), [[],[]], [[],[]], [[],[]], [[],[]], [[],[]] )
+
+    ch_versions = ch_versions.mix(STATS_SNPS.out.versions)
+    ch_reports = ch_reports.mix(STATS_SNPS.out.stats.collect{it[1]})
+
 
     //
     // INDEL WORKFLOW
@@ -187,6 +195,11 @@ workflow VARIANTCONSENSUS {
 
     ch_versions = ch_versions.mix(PASS_INDELS.out.versions)
 
+    STATS_INDELS( PASS_INDELS.out.vcf.join(PASS_INDELS.out.tbi), [[],[]], [[],[]], [[],[]], [[],[]], [[],[]] )
+
+    ch_versions = ch_versions.mix(STATS_INDELS.out.versions)
+    ch_reports = ch_reports.mix(STATS_INDELS.out.stats.collect{it[1]})
+
     //
     // Collate and save software versions
     //
@@ -236,6 +249,7 @@ workflow VARIANTCONSENSUS {
             sort: true,
         )
     )
+    ch_multiqc_files = ch_multiqc_files.mix(ch_reports)
 
     MULTIQC(
         ch_multiqc_files.collect(),

@@ -11,4 +11,16 @@ report_section_order:
 
 export_plots: true
 
-disable_version_detection: true
+run_modules:
+  - bcftools
+
+module_order:
+  - bcftools
+
+bcftools:
+  fn: "*bcftools_stats.txt"
+  general_stats_table: false
+
+fn_clean_exts:
+  - ".bcftools_stats"
+  - ".txt"
