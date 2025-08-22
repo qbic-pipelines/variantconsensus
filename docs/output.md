@@ -23,7 +23,7 @@ The pipeline is built using [Nextflow](https://www.nextflow.io/) and processes d
 <summary>Output files</summary>
 
 - `bcftools/{snps,indels}/view/*.{caller}.snps.{vcf.gz,vcf.gz.tbi}`: vcf file and its index containing SNPs
-- `bcftool/{snps,indels}s/view/*.{caller}.indels.{vcf.gz,vcf.gz.tbi}`: vcf file and its index containing INDELs
+- `bcftools/{snps,indels}s/view/*.{caller}.indels.{vcf.gz,vcf.gz.tbi}`: vcf file and its index containing INDELs
 
 </details>
 
