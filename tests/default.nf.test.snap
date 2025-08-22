@@ -232,7 +232,7 @@
                 "A_t5.indels.bcftools_stats.txt:md5,e1c1cb35cf27f182da1e7edf9ae57b66",
                 "A_t5.snps.bcftools_stats.txt:md5,57f1d3f43b9a6e31755e6b748fd3e2f2",
                 "versions.yml:md5,6f93ac208378534f2b93bfd872b3fce3",
-                "versions.yml:md5,c795ab4eb72e3615f3a73112ee4c38fb",
+                "versions.yml:md5,3ad9c2a4cc23efb3315075e1b3a8212d",
                 "bcftools-stats-subtypes.txt:md5,afb8ff6396d1c2dcf4e00970b4fb3854",
                 "bcftools_stats_indel-lengths.txt:md5,43227c2772848e5d113bb464d3a516a6",
                 "bcftools_stats_variant_depths.txt:md5,9fc57f153b4370fa426954101c30c5df",
@@ -259,6 +259,6 @@
             "nf-test": "0.9.2",
             "nextflow": "25.04.6"
         },
-        "timestamp": "2025-08-22T11:13:57.660066299"
+        "timestamp": "2025-08-22T11:44:06.318266842"
     }
 }
