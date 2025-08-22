@@ -12,7 +12,6 @@ The pipeline is built using [Nextflow](https://www.nextflow.io/) and processes d
 
 - [bcftools/view](#bcftools-view) - Divide VCFs into SNPs and INDELs
 - [bcftools/isec](#bcftools-isec) - Intersect SNPs / INDELs keeping only variants found in at least (N-1) / 2 of the provided VCFs
-- [tabix/bgzip](#tabix-bgzip) - Bgzip and index the consensus VCF
 - [bcftools/pass](#bcftools-pass) - Filter the consensus VCF for variants marked as 'PASS,.' with `bcftools view`
 - [bcftools/stats](#bcftools-stats) - Report statistics on filtered VCFs
 - [MultiQC](#multiqc) - Aggregate report describing results and QC from the whole pipeline
@@ -23,8 +22,8 @@ The pipeline is built using [Nextflow](https://www.nextflow.io/) and processes d
 <details markdown="1">
 <summary>Output files</summary>
 
-- `bcftools/view/{caller}/*.snps.{vcf.gz,vcf.gz.tbi}`: vcf file and its index containing SNPs
-- `bcftools/view/{caller}/*.indels.{vcf.gz,vcf.gz.tbi}`: vcf file and its index containing INDELs
+- `bcftools/{snps,indels}/view/*.{caller}.snps.{vcf.gz,vcf.gz.tbi}`: vcf file and its index containing SNPs
+- `bcftool/{snps,indels}s/view/*.{caller}.indels.{vcf.gz,vcf.gz.tbi}`: vcf file and its index containing INDELs
 
 </details>
 
@@ -33,20 +32,10 @@ The pipeline is built using [Nextflow](https://www.nextflow.io/) and processes d
 <details markdown="1">
 <summary>Output files</summary>
 
-- `bcftools/isec/{snps,indels}/{patient}_{sample}.{snps,indels}/`: directory containing the results of the intersection
+- `bcftools/{snps,indels}/isec/{patient}_{sample}.{snps,indels}/`: directory containing the results of the intersection
   - `README.txt`: Info on the isec results decribing all contained files
   - `000x.vcf`: VCF file with the intersected variants
   - `sites.txt`: evaluated sites
-
-</details>
-
-### Tabix BGzip
-
-<details markdown="1">
-<summary>Output files</summary>
-
-- `bgzip/{snps,indels}/{patient}_{sample}.{snps,indels}.vcf.gz`: Bgzipped VCF file
-- `bgzip/{snps,indels}/{patient}_{sample}.{snps,indels}.vcf.gz.tbi`: Index of bgzipped VCF file
 
 </details>
 
@@ -55,8 +44,8 @@ The pipeline is built using [Nextflow](https://www.nextflow.io/) and processes d
 <details markdown="1">
 <summary>Output files</summary>
 
-- `bcftools/pass/{snps,indels}/{patient}_{sample}.{snps,indels}.consensus.pass.vcf.gz`: VCF file containing only variants marked as PASS or .
-- `bcftools/pass/{snps,indels}/{patient}_{sample}.{snps,indels}.consensus.pass.vcf.gz.tbi`: Index of filtered VCF file
+- `bcftools/{snps,indels}/pass/{patient}_{sample}.{snps,indels}.consensus.pass.vcf.gz`: VCF file containing only variants marked as PASS or .
+- `bcftools/{snps,indels}/pass/{patient}_{sample}.{snps,indels}.consensus.pass.vcf.gz.tbi`: Index of filtered VCF file
 
 </details>
 
@@ -65,7 +54,7 @@ The pipeline is built using [Nextflow](https://www.nextflow.io/) and processes d
 <details markdown="1">
 <summary>Output files</summary>
 
-- `bcftools/stats/{snps,indels}/{patient}_{sample}.{snps,indels}.bcftools_stats.txt`: TXT file containing stats output
+- `bcftools/{snps,indels}/stats/{patient}_{sample}.{snps,indels}.bcftools_stats.txt`: TXT file containing stats output
 
 </details>
 
