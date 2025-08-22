@@ -85,14 +85,14 @@
                 "A_t5.indels.bcftools_stats.txt:md5,d41d8cd98f00b204e9800998ecf8427e",
                 "A_t5.snps.bcftools_stats.txt:md5,d41d8cd98f00b204e9800998ecf8427e",
                 "versions.yml:md5,6f93ac208378534f2b93bfd872b3fce3",
-                "versions.yml:md5,c795ab4eb72e3615f3a73112ee4c38fb"
+                "versions.yml:md5,3ad9c2a4cc23efb3315075e1b3a8212d"
             ]
         ],
         "meta": {
             "nf-test": "0.9.2",
             "nextflow": "25.04.6"
         },
-        "timestamp": "2025-08-22T11:00:15.987935685"
+        "timestamp": "2025-08-22T11:05:02.67024143"
     },
     "Params: default": {
         "content": [
@@ -171,6 +171,7 @@
                 "multiqc/multiqc_data/bcftools_stats_vqc_Count_SNP.txt",
                 "multiqc/multiqc_data/bcftools_stats_vqc_Count_Transitions.txt",
                 "multiqc/multiqc_data/bcftools_stats_vqc_Count_Transversions.txt",
+                "multiqc/multiqc_data/llms-full.txt",
                 "multiqc/multiqc_data/multiqc.log",
                 "multiqc/multiqc_data/multiqc_bcftools_stats.txt",
                 "multiqc/multiqc_data/multiqc_citations.txt",
@@ -178,6 +179,37 @@
                 "multiqc/multiqc_data/multiqc_general_stats.txt",
                 "multiqc/multiqc_data/multiqc_software_versions.txt",
                 "multiqc/multiqc_data/multiqc_sources.txt",
+                "multiqc/multiqc_plots",
+                "multiqc/multiqc_plots/pdf",
+                "multiqc/multiqc_plots/pdf/bcftools-stats-subtypes-cnt.pdf",
+                "multiqc/multiqc_plots/pdf/bcftools-stats-subtypes-pct.pdf",
+                "multiqc/multiqc_plots/pdf/bcftools_stats_indel-lengths-cnt.pdf",
+                "multiqc/multiqc_plots/pdf/bcftools_stats_indel-lengths-log.pdf",
+                "multiqc/multiqc_plots/pdf/bcftools_stats_variant_depths.pdf",
+                "multiqc/multiqc_plots/pdf/bcftools_stats_vqc_Count_Indels.pdf",
+                "multiqc/multiqc_plots/pdf/bcftools_stats_vqc_Count_SNP.pdf",
+                "multiqc/multiqc_plots/pdf/bcftools_stats_vqc_Count_Transitions.pdf",
+                "multiqc/multiqc_plots/pdf/bcftools_stats_vqc_Count_Transversions.pdf",
+                "multiqc/multiqc_plots/png",
+                "multiqc/multiqc_plots/png/bcftools-stats-subtypes-cnt.png",
+                "multiqc/multiqc_plots/png/bcftools-stats-subtypes-pct.png",
+                "multiqc/multiqc_plots/png/bcftools_stats_indel-lengths-cnt.png",
+                "multiqc/multiqc_plots/png/bcftools_stats_indel-lengths-log.png",
+                "multiqc/multiqc_plots/png/bcftools_stats_variant_depths.png",
+                "multiqc/multiqc_plots/png/bcftools_stats_vqc_Count_Indels.png",
+                "multiqc/multiqc_plots/png/bcftools_stats_vqc_Count_SNP.png",
+                "multiqc/multiqc_plots/png/bcftools_stats_vqc_Count_Transitions.png",
+                "multiqc/multiqc_plots/png/bcftools_stats_vqc_Count_Transversions.png",
+                "multiqc/multiqc_plots/svg",
+                "multiqc/multiqc_plots/svg/bcftools-stats-subtypes-cnt.svg",
+                "multiqc/multiqc_plots/svg/bcftools-stats-subtypes-pct.svg",
+                "multiqc/multiqc_plots/svg/bcftools_stats_indel-lengths-cnt.svg",
+                "multiqc/multiqc_plots/svg/bcftools_stats_indel-lengths-log.svg",
+                "multiqc/multiqc_plots/svg/bcftools_stats_variant_depths.svg",
+                "multiqc/multiqc_plots/svg/bcftools_stats_vqc_Count_Indels.svg",
+                "multiqc/multiqc_plots/svg/bcftools_stats_vqc_Count_SNP.svg",
+                "multiqc/multiqc_plots/svg/bcftools_stats_vqc_Count_Transitions.svg",
+                "multiqc/multiqc_plots/svg/bcftools_stats_vqc_Count_Transversions.svg",
                 "multiqc/multiqc_report.html",
                 "pipeline_info",
                 "pipeline_info/variantconsensus_software_mqc_versions.yml"
@@ -200,6 +232,7 @@
                 "bcftools_stats_vqc_Count_SNP.txt:md5,054646f4c45f7e64e2a553e7a0e066dd",
                 "bcftools_stats_vqc_Count_Transitions.txt:md5,aaa2ee1b8323d4776b6ba22fbbdd23f2",
                 "bcftools_stats_vqc_Count_Transversions.txt:md5,3cd2ca0191aa1c707685f89af7a93ad4",
+                "llms-full.txt:md5,c0b4ae2858d5e2ae7c824b6f29581be7",
                 "multiqc_bcftools_stats.txt:md5,9351ca77c7dac5eb36f19be91a49c041",
                 "multiqc_citations.txt:md5,5cbab4ecbe14049d965fd97bd61d252b"
             ],
@@ -218,6 +251,6 @@
             "nf-test": "0.9.2",
             "nextflow": "25.04.6"
         },
-        "timestamp": "2025-08-22T11:00:01.860224107"
+        "timestamp": "2025-08-22T11:04:46.365261746"
     }
 }

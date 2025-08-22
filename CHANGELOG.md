@@ -9,9 +9,10 @@ Initial release of qbic-pipelines/variantconsensus, created with the [nf-core](h
 
 ### `Added`
 
-- [#3](https://github.com/qbic-pipelines/variantconsensus/pull/3) - feat: add bcftools/view to divide between snps and indels
-- [#4](https://github.com/qbic-pipelines/variantconsensus/pull/4) - feat: add intersection of snp vcfs
-- [#6](https://github.com/qbic-pipelines/variantconsensus/pull/6) - feat: add INDEL intersection
+- [#3](https://github.com/qbic-pipelines/variantconsensus/pull/3) - Add bcftools/view to divide between snps and indels
+- [#4](https://github.com/qbic-pipelines/variantconsensus/pull/4) - Add intersection of snp vcfs
+- [#6](https://github.com/qbic-pipelines/variantconsensus/pull/6) - Add INDEL intersection
+- [#9](https://github.com/qbic-pipelines/variantconsensus/pull/9) - Add bcftools stats and edit multiqc report
 
 ### `Fixed`
 
