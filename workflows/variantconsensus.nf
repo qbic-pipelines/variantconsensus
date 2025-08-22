@@ -3,16 +3,17 @@
     IMPORT MODULES / SUBWORKFLOWS / FUNCTIONS
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
-// Used Modules
-include { BCFTOOLS_VIEW as FILTER_SNPS     } from '../modules/nf-core/bcftools/view/main'
-include { BCFTOOLS_VIEW as FILTER_INDELS   } from '../modules/nf-core/bcftools/view/main'
-include { BCFTOOLS_ISEC as ISEC_SNPS       } from '../modules/nf-core/bcftools/isec/main'
-include { BCFTOOLS_VIEW as PASS_SNPS       } from '../modules/nf-core/bcftools/view/main'
-include { BCFTOOLS_ISEC as ISEC_INDELS     } from '../modules/nf-core/bcftools/isec/main'
-include { BCFTOOLS_VIEW as PASS_INDELS     } from '../modules/nf-core/bcftools/view/main'
+// SNPs
+include { BCFTOOLS_VIEW as FILTER_SNPS     } from '../modules/nf-core/bcftools/view'
+include { BCFTOOLS_ISEC as ISEC_SNPS       } from '../modules/nf-core/bcftools/isec'
+include { BCFTOOLS_VIEW as PASS_SNPS       } from '../modules/nf-core/bcftools/view'
+// INDELs
+include { BCFTOOLS_VIEW as FILTER_INDELS   } from '../modules/nf-core/bcftools/view'
+include { BCFTOOLS_ISEC as ISEC_INDELS     } from '../modules/nf-core/bcftools/isec'
+include { BCFTOOLS_VIEW as PASS_INDELS     } from '../modules/nf-core/bcftools/view'
 
 // Template Modules
-include { MULTIQC                          } from '../modules/nf-core/multiqc/main'
+include { MULTIQC                          } from '../modules/nf-core/multiqc'
 include { paramsSummaryMap                 } from 'plugin/nf-schema'
 include { paramsSummaryMultiqc             } from '../subworkflows/nf-core/utils_nfcore_pipeline'
 include { softwareVersionsToYAML           } from '../subworkflows/nf-core/utils_nfcore_pipeline'
@@ -178,6 +179,8 @@ workflow VARIANTCONSENSUS {
             return [meta, copied_file, copied_index]
         }
         .set { ch_intersect_all_indels }
+
+    ch_versions = ch_versions.mix(ISEC_INDELS.out.versions)
 
     // Filter the INDELs for PASS variants
     PASS_INDELS( ch_intersect_all_indels, [], [], [] )

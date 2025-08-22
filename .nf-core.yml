@@ -1,8 +1,12 @@
-repository_type: pipeline
-
-nf_core_version: 3.2.0
-
 lint:
+  files_exist:
+    - CODE_OF_CONDUCT.md
+    - assets/nf-core-variantconsensus_logo_light.png
+    - docs/images/nf-core-variantconsensus_logo_light.png
+    - docs/images/nf-core-variantconsensus_logo_dark.png
+    - .github/ISSUE_TEMPLATE/config.yml
+    - .github/workflows/awstest.yml
+    - .github/workflows/awsfulltest.yml
   files_unchanged:
     - CODE_OF_CONDUCT.md
     - assets/nf-core-variantconsensus_logo_light.png
@@ -13,6 +17,8 @@ lint:
     - .github/PULL_REQUEST_TEMPLATE.md
     - assets/email_template.txt
     - docs/README.md
+  multiqc_config:
+    - report_comment
   nextflow_config:
     - manifest.name
     - manifest.homePage
@@ -20,26 +26,17 @@ lint:
     - validation.help.afterText
     - validation.summary.beforeText
     - validation.summary.afterText
-  multiqc_config:
-    - report_comment
-  files_exist:
-    - CODE_OF_CONDUCT.md
-    - assets/nf-core-variantconsensus_logo_light.png
-    - docs/images/nf-core-variantconsensus_logo_light.png
-    - docs/images/nf-core-variantconsensus_logo_dark.png
-    - .github/ISSUE_TEMPLATE/config.yml
-    - .github/workflows/awstest.yml
-    - .github/workflows/awsfulltest.yml
-
+nf_core_version: 3.3.2
+repository_type: pipeline
 template:
-  org: qbic-pipelines
-  name: variantconsensus
+  author: "Famke Baeuerle"
   description: This pipeline takes multiple VCFs from different callers and creates
     a consensus-based VCF.
-  author: "Famke B\xE4uerle"
-  version: 1.0.0dev
-  force: true
+  force: false
+  is_nfcore: false
+  name: variantconsensus
+  org: qbic-pipelines
   outdir: .
   skip_features:
     - fastqc
-  is_nfcore: false
+  version: 1.0.0dev

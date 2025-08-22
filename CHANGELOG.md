@@ -16,6 +16,7 @@ Initial release of qbic-pipelines/variantconsensus, created with the [nf-core](h
 ### `Fixed`
 
 - [#8](https://github.com/qbic-pipelines/variantconsensus/pull/8) - Make bcftools/isec gzip and tabix the consensus
+- [#10](https://github.com/qbic-pipelines/variantconsensus/pull/10) - Template update to 3.3.2
 
 ### `Dependencies`
 
