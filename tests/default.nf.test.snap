@@ -9,6 +9,9 @@
                 "FILTER_SNPS": {
                     "bcftools": 1.21
                 },
+                "ISEC_INDELS": {
+                    "bcftools": 1.21
+                },
                 "ISEC_SNPS": {
                     "bcftools": 1.21
                 },
@@ -76,7 +79,7 @@
             "nf-test": "0.9.2",
             "nextflow": "25.04.6"
         },
-        "timestamp": "2025-08-22T10:33:08.847827425"
+        "timestamp": "2025-08-22T10:43:27.434679141"
     },
     "Params: default": {
         "content": [
@@ -86,6 +89,9 @@
                     "bcftools": 1.21
                 },
                 "FILTER_SNPS": {
+                    "bcftools": 1.21
+                },
+                "ISEC_INDELS": {
                     "bcftools": 1.21
                 },
                 "ISEC_SNPS": {
@@ -151,7 +157,7 @@
                 "sites.txt:md5,ec44fcb80ac7ef7b5543176f359d25fa",
                 "versions.yml:md5,6fb97ad6be18874723709ce6b1b4bdd2",
                 "versions.yml:md5,1a00c1e02803ea5a955dacf1fed8c45f",
-                "versions.yml:md5,3ad9c2a4cc23efb3315075e1b3a8212d",
+                "versions.yml:md5,c795ab4eb72e3615f3a73112ee4c38fb",
                 "multiqc_citations.txt:md5,4c806e63a283ec1b7e78cdae3a923d4f"
             ],
             [
@@ -169,6 +175,6 @@
             "nf-test": "0.9.2",
             "nextflow": "25.04.6"
         },
-        "timestamp": "2025-08-22T10:32:55.449187805"
+        "timestamp": "2025-08-22T10:43:14.139383833"
     }
 }

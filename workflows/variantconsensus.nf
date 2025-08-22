@@ -180,6 +180,8 @@ workflow VARIANTCONSENSUS {
         }
         .set { ch_intersect_all_indels }
 
+    ch_versions = ch_versions.mix(ISEC_INDELS.out.versions)
+
     // Filter the INDELs for PASS variants
     PASS_INDELS( ch_intersect_all_indels, [], [], [] )
 
@@ -243,6 +245,8 @@ workflow VARIANTCONSENSUS {
         [],
         [],
     )
+
+    ch_versions = ch_versions.mix(MULTIQC.out.versions)
 
     emit:
     multiqc_report = MULTIQC.out.report.toList() // channel: /path/to/multiqc_report.html
