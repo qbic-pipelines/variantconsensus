@@ -29,7 +29,7 @@ lint:
 nf_core_version: 3.3.2
 repository_type: pipeline
 template:
-  author: "Famke B\xE4uerle"
+  author: "Famke Baeuerle"
   description: This pipeline takes multiple VCFs from different callers and creates
     a consensus-based VCF.
   force: false
