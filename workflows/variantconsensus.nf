@@ -12,6 +12,7 @@ include { BCFTOOLS_STATS as STATS_SNPS     } from '../modules/nf-core/bcftools/s
 include { BCFTOOLS_VIEW as FILTER_INDELS   } from '../modules/nf-core/bcftools/view'
 include { BCFTOOLS_ISEC as ISEC_INDELS     } from '../modules/nf-core/bcftools/isec'
 include { BCFTOOLS_VIEW as PASS_INDELS     } from '../modules/nf-core/bcftools/view'
+include { BCFTOOLS_STATS as STATS_INDELS   } from '../modules/nf-core/bcftools/stats'
 
 // Template Modules
 include { MULTIQC                          } from '../modules/nf-core/multiqc'
@@ -193,6 +194,11 @@ workflow VARIANTCONSENSUS {
     PASS_INDELS( ch_intersect_all_indels, [], [], [] )
 
     ch_versions = ch_versions.mix(PASS_INDELS.out.versions)
+
+    STATS_INDELS( PASS_INDELS.out.vcf.join(PASS_INDELS.out.tbi), [[],[]], [[],[]], [[],[]], [[],[]], [[],[]] )
+
+    ch_versions = ch_versions.mix(STATS_INDELS.out.versions)
+    ch_reports = ch_reports.mix(STATS_INDELS.out.stats.collect{it[1]})
 
     //
     // Collate and save software versions
