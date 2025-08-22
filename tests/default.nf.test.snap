@@ -156,7 +156,6 @@
                 "bcftools/isec/snps/A_t5.snps/0000.vcf.gz.tbi",
                 "bcftools/isec/snps/A_t5.snps/0001.vcf.gz",
                 "bcftools/isec/snps/A_t5.snps/0001.vcf.gz.tbi",
-                "bcftools/isec/snps/A_t5.snps/A.A_t5.snps.consensus.vcf.gz",
                 "bcftools/isec/snps/A_t5.snps/README.txt",
                 "bcftools/isec/snps/A_t5.snps/sites.txt",
                 "bcftools/isec/snps/versions.yml",
@@ -266,7 +265,6 @@
                 "0001.vcf.gz:md5,d41d8cd98f00b204e9800998ecf8427e",
                 "0000.vcf.gz:md5,a9d0016bdee16f18dd1f83a5a052358f",
                 "0001.vcf.gz:md5,66e58a9846ab6aa0a9f256f108337f9c",
-                "A.A_t5.snps.consensus.vcf.gz:md5,a9d0016bdee16f18dd1f83a5a052358f",
                 "A_t5.indels.consensus.pass.vcf.gz:md5,d41d8cd98f00b204e9800998ecf8427e",
                 "A_t5.snps.consensus.pass.vcf.gz:md5,271c535cee4a7cb3bfb1be5fbaace233",
                 "A_t5.muse.indels.vcf.gz:md5,d41d8cd98f00b204e9800998ecf8427e",
@@ -277,6 +275,6 @@
             "nf-test": "0.9.2",
             "nextflow": "25.04.6"
         },
-        "timestamp": "2025-08-22T11:46:55.867717682"
+        "timestamp": "2025-08-22T11:52:23.131286847"
     }
 }
