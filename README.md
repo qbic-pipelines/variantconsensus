@@ -25,6 +25,8 @@ Inspired by
 4. Report statistics for the filtered consensus VCFs ([bcftools/stats](https://samtools.github.io/bcftools/bcftools.html))
 5. Present statistics for variants ([`MultiQC`](http://multiqc.info/))
 
+![Subway Map](docs/subway.png)
+
 ## Usage
 
 > [!NOTE]

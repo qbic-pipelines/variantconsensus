@@ -13,6 +13,7 @@ Initial release of qbic-pipelines/variantconsensus, created with the [nf-core](h
 - [#4](https://github.com/qbic-pipelines/variantconsensus/pull/4) - Add intersection of snp vcfs
 - [#6](https://github.com/qbic-pipelines/variantconsensus/pull/6) - Add INDEL intersection
 - [#9](https://github.com/qbic-pipelines/variantconsensus/pull/9) - Add bcftools stats and edit multiqc report
+- [#10](https://github.com/qbic-pipelines/variantconsensus/pull/10) - Enhance docs with images
 
 ### `Fixed`
 
