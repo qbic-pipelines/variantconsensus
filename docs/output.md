@@ -37,7 +37,7 @@ A visual representation of how the consensus looks like your can find below:
 
 - `bcftools/{snps,indels}/isec/{patient}_{sample}.{snps,indels}/`: directory containing the results of the intersection
   - `README.txt`: Info on the isec results decribing all contained files
-  - `000x.vcf`: VCF file with the intersected variants
+  - `000x.vcf.gz`: VCF file with the intersected variants
   - `sites.txt`: evaluated sites
 
 </details>
