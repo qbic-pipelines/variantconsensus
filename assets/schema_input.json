@@ -41,11 +41,11 @@
             },
             "varianttype": {
                 "type": "string",
-                "pattern": "^\\S+$",
-                "errorMessage": "Varianttype can be provided and cannot contain spaces [either 'snps' or 'indels']",
+                "enum": ["both", "snps", "indels"],
+                "errorMessage": "Varianttype must be one of: 'both', 'snps', or 'indels'",
                 "meta": ["varianttype"]
             }
         },
-        "required": ["patient", "sample", "variantcaller", "vcf", "vcf_tbi"]
+        "required": ["patient", "sample", "variantcaller", "vcf", "vcf_tbi", "varianttype"]
     }
 }

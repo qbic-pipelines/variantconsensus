@@ -30,8 +30,8 @@ nf_core_version: 3.3.2
 repository_type: pipeline
 template:
   author: "Famke Baeuerle"
-  description: This pipeline takes multiple VCFs from different callers and creates
-    a consensus-based VCF.
+  description: This pipeline takes multiple VCFs from different callers and
+    creates a consensus-based VCF.
   force: false
   is_nfcore: false
   name: variantconsensus
@@ -39,4 +39,4 @@ template:
   outdir: .
   skip_features:
     - fastqc
-  version: 1.0.0dev
+  version: 1.0.0
