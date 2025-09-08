@@ -20,6 +20,7 @@ Initial release of qbic-pipelines/variantconsensus, created with the [nf-core](h
 - [#8](https://github.com/qbic-pipelines/variantconsensus/pull/8) - Make bcftools/isec gzip and tabix the consensus
 - [#10](https://github.com/qbic-pipelines/variantconsensus/pull/10) - Template update to 3.3.2
 - [#12](https://github.com/qbic-pipelines/variantconsensus/pull/12) - Update modules and remove TODOs
+- [#17](https://github.com/qbic-pipelines/variantconsensus/pull/17) - Remove tests folders
 
 ### `Dependencies`
 
