@@ -1,10 +1,11 @@
 # qbic-pipelines/variantconsensus
 
-[![GitHub Actions CI Status](https://github.com/qbic-pipelines/variantconsensus/actions/workflows/ci.yml/badge.svg)](https://github.com/qbic-pipelines/variantconsensus/actions/workflows/ci.yml)
+[![GitHub Actions CI Status](https://github.com/qbic-pipelines/variantconsensus/actions/workflows/nf-test.yml/badge.svg)](https://github.com/qbic-pipelines/variantconsensus/actions/workflows/nf-test.yml)
 [![GitHub Actions Linting Status](https://github.com/qbic-pipelines/variantconsensus/actions/workflows/linting.yml/badge.svg)](https://github.com/qbic-pipelines/variantconsensus/actions/workflows/linting.yml)[![Cite with Zenodo](http://img.shields.io/badge/DOI-10.5281/zenodo.XXXXXXX-1073c8?labelColor=000000)](https://doi.org/10.5281/zenodo.XXXXXXX)
 [![nf-test](https://img.shields.io/badge/unit_tests-nf--test-337ab7.svg)](https://www.nf-test.com)
 
-[![Nextflow](https://img.shields.io/badge/nextflow%20DSL2-%E2%89%A524.04.2-23aa62.svg)](https://www.nextflow.io/)
+[![Nextflow](https://img.shields.io/badge/version-%E2%89%A524.10.5-green?style=flat&logo=nextflow&logoColor=white&color=%230DC09D&link=https%3A%2F%2Fnextflow.io)](https://www.nextflow.io/)
+[![nf-core template version](https://img.shields.io/badge/nf--core_template-3.3.2-green?style=flat&logo=nfcore&logoColor=white&color=%2324B064&link=https%3A%2F%2Fnf-co.re)](https://github.com/nf-core/tools/releases/tag/3.3.2)
 [![run with conda](http://img.shields.io/badge/run%20with-conda-3EB049?labelColor=000000&logo=anaconda)](https://docs.conda.io/en/latest/)
 [![run with docker](https://img.shields.io/badge/run%20with-docker-0db7ed?labelColor=000000&logo=docker)](https://www.docker.com/)
 [![run with singularity](https://img.shields.io/badge/run%20with-singularity-1d355c.svg?labelColor=000000)](https://sylabs.io/docs/)
@@ -12,42 +13,37 @@
 
 ## Introduction
 
-**qbic-pipelines/variantconsensus** is a bioinformatics pipeline that ...
+**qbic-pipelines/variantconsensus** is a bioinformatics pipeline that combines results from multiple variant callers to find a consensus VCF.
 
-<!-- TODO nf-core:
-   Complete this sentence with a 2-3 sentence summary of what types of data the pipeline ingests, a brief overview of the
-   major pipeline sections and the types of output it produces. You're giving an overview to someone new
-   to nf-core here, in 15-20 seconds. For an example, see https://github.com/nf-core/rnaseq/blob/master/README.md#introduction
--->
+Inspired by
 
-<!-- TODO nf-core: Include a figure that guides the user through the major workflow steps. Many nf-core
-     workflows use the "tube map" design for that. See https://nf-co.re/docs/contributing/design_guidelines#examples for examples.   -->
-<!-- TODO nf-core: Fill in short bullet-pointed list of the default steps in the pipeline -->2. Present QC for raw reads ([`MultiQC`](http://multiqc.info/))
+> Trevarton, A. J., Chang, J. T., & Symmans, W. F. (2023). Simple combination of multiple somatic variant callers to increase accuracy. Scientific reports, 13(1), 8463.
+
+1. Split provided VCFs into SNPs and INDELS ([bcftools/view](https://samtools.github.io/bcftools/bcftools.html))
+2. Intersect SNPs / INDELs keeping only variants found in at least (N-1) / 2 of the provided VCFs ([bcftools/isec](https://samtools.github.io/bcftools/bcftools.html))
+3. Filter the consensus VCF for variants marked as 'PASS,.' ([bcftools/view](https://samtools.github.io/bcftools/bcftools.html))
+4. Report statistics for the filtered consensus VCFs ([bcftools/stats](https://samtools.github.io/bcftools/bcftools.html))
+5. Present statistics for variants ([`MultiQC`](http://multiqc.info/))
+
+![Subway Map](docs/subway.png)
 
 ## Usage
 
 > [!NOTE]
 > If you are new to Nextflow and nf-core, please refer to [this page](https://nf-co.re/docs/usage/installation) on how to set-up Nextflow. Make sure to [test your setup](https://nf-co.re/docs/usage/introduction#how-to-run-a-pipeline) with `-profile test` before running the workflow on actual data.
 
-<!-- TODO nf-core: Describe the minimum required steps to execute the pipeline, e.g. how to prepare samplesheets.
-     Explain what rows and columns represent. For instance (please edit as appropriate):
-
 First, prepare a samplesheet with your input data that looks as follows:
 
 `samplesheet.csv`:
 
 ```csv
-sample,fastq_1,fastq_2
-CONTROL_REP1,AEG588A1_S1_L002_R1_001.fastq.gz,AEG588A1_S1_L002_R2_001.fastq.gz
+patient,sample,variantcaller,vcf,vcf_tbi,varianttype
+A,t5,strelka,https://github.com/qbic-pipelines/test-datasets/raw/refs/heads/main/variantconsensus/tumor_5_vs_normal_5.strelka.somatic_indels_VEP.ann.vcf.gz,https://github.com/qbic-pipelines/test-datasets/raw/refs/heads/main/variantconsensus/tumor_5_vs_normal_5.strelka.somatic_indels_VEP.ann.vcf.gz.tbi,indels
 ```
 
-Each row represents a fastq file (single-end) or a pair of fastq files (paired end).
-
--->
+Each row represents a VCF file and its index. The varianttype can be either snps, indels or both.
 
 Now, you can run the pipeline using:
-
-<!-- TODO nf-core: update the following command to include all required parameters for a minimal example -->
 
 ```bash
 nextflow run qbic-pipelines/variantconsensus \
@@ -75,8 +71,6 @@ If you would like to contribute to this pipeline, please see the [contributing g
 
 <!-- TODO nf-core: Add citation for pipeline after first release. Uncomment lines below and update Zenodo doi and badge at the top of this file. -->
 <!-- If you use qbic-pipelines/variantconsensus for your analysis, please cite it using the following doi: [10.5281/zenodo.XXXXXX](https://doi.org/10.5281/zenodo.XXXXXX) -->
-
-<!-- TODO nf-core: Add bibliography of tools and data used in your pipeline -->
 
 An extensive list of references for the tools used by the pipeline can be found in the [`CITATIONS.md`](CITATIONS.md) file.
 

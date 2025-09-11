@@ -9,7 +9,19 @@ Initial release of qbic-pipelines/variantconsensus, created with the [nf-core](h
 
 ### `Added`
 
+- [#3](https://github.com/qbic-pipelines/variantconsensus/pull/3) - Add bcftools/view to divide between snps and indels
+- [#4](https://github.com/qbic-pipelines/variantconsensus/pull/4) - Add intersection of snp vcfs
+- [#6](https://github.com/qbic-pipelines/variantconsensus/pull/6) - Add INDEL intersection
+- [#9](https://github.com/qbic-pipelines/variantconsensus/pull/9) - Add bcftools stats and edit multiqc report
+- [#10](https://github.com/qbic-pipelines/variantconsensus/pull/10) - Enhance docs with images
+
 ### `Fixed`
+
+- [#8](https://github.com/qbic-pipelines/variantconsensus/pull/8) - Make bcftools/isec gzip and tabix the consensus
+- [#10](https://github.com/qbic-pipelines/variantconsensus/pull/10) - Template update to 3.3.2
+- [#12](https://github.com/qbic-pipelines/variantconsensus/pull/12) - Update modules and remove TODOs
+- [#15](https://github.com/qbic-pipelines/variantconsensus/pull/15) - Bump version to 1.0.0
+- [#17](https://github.com/qbic-pipelines/variantconsensus/pull/17) - Remove tests folders
 
 ### `Dependencies`
 

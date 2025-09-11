@@ -8,7 +8,19 @@
 
 > Di Tommaso P, Chatzou M, Floden EW, Barja PP, Palumbo E, Notredame C. Nextflow enables reproducible computational workflows. Nat Biotechnol. 2017 Apr 11;35(4):316-319. doi: 10.1038/nbt.3820. PubMed PMID: 28398311.
 
+## [Consensus Paper](https://doi.org/10.1038/s41598-023-34925-y)
+
+> Trevarton, A. J., Chang, J. T., & Symmans, W. F. (2023). Simple combination of multiple somatic variant callers to increase accuracy. Scientific reports, 13(1), 8463.
+
 ## Pipeline tools
+
+- [BCFTools](https://pubmed.ncbi.nlm.nih.gov/21903627/)
+
+  > Li H: A statistical framework for SNP calling, mutation discovery, association mapping and population genetical parameter estimation from sequencing data. Bioinformatics. 2011 Nov 1;27(21):2987-93. doi: 10.1093/bioinformatics/btr509. PubMed PMID: 21903627; PubMed Central PMCID: PMC3198575.
+
+- [Tabix](https://academic.oup.com/bioinformatics/article/27/5/718/262743)
+
+  > Li H, Tabix: fast retrieval of sequence features from generic TAB-delimited files, Bioinformatics, Volume 27, Issue 5, 1 March 2011, Pages 718–719, doi: 10.1093/bioinformatics/btq671. PubMed PMID: 21208982. PubMed Central PMCID: PMC3042176.
 
 - [MultiQC](https://pubmed.ncbi.nlm.nih.gov/27312411/)
 

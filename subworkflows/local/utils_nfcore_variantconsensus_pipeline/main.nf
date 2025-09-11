@@ -75,11 +75,11 @@ workflow PIPELINE_INITIALISATION {
     Channel
         .fromList(samplesheetToList(params.input, "${projectDir}/assets/schema_input.json"))
         .map {
-            meta, fastq_1, fastq_2 ->
-                if (!fastq_2) {
-                    return [ meta.id, meta + [ single_end:true ], [ fastq_1 ] ]
+            meta, vcf, vcf_tbi ->
+                if (!vcf_tbi) {
+                    return [ meta.patient + meta.sample + meta.caller + meta.varianttype, meta + [ no_index:true ] + [ id: meta.patient + '_' + meta.sample], [ vcf ] ]
                 } else {
-                    return [ meta.id, meta + [ single_end:false ], [ fastq_1, fastq_2 ] ]
+                    return [ meta.patient + meta.sample + meta.caller + meta.varianttype, meta + [ no_index:false ] + [ id: meta.patient + '_' + meta.sample], [ vcf, vcf_tbi ] ]
                 }
         }
         .groupTuple()
@@ -87,8 +87,8 @@ workflow PIPELINE_INITIALISATION {
             validateInputSamplesheet(samplesheet)
         }
         .map {
-            meta, fastqs ->
-                return [ meta, fastqs.flatten() ]
+            meta, vcfs ->
+                return [ meta, vcfs.flatten() ]
         }
         .set { ch_samplesheet }
 
@@ -259,4 +259,3 @@ def methodsDescriptionText(mqc_methods_yaml) {
 
     return description_html.toString()
 }
-
